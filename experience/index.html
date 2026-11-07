@@ -8,6 +8,9 @@
       try {
         var t = localStorage.getItem('portfolio-accent-theme') || 'red';
         document.documentElement.setAttribute('data-theme', t);
+        if (sessionStorage.getItem('portfolio-opening-played') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.classList.add('intro-already-played');
+        }
       } catch(e) {}
     })();
   </script>
@@ -3444,10 +3447,411 @@
         transform: translateY(0) scale(1);
       }
     }
-</style>
+
+    /* ==========================================================================
+       CINEMATIC OPENING HERO ANIMATION
+       ========================================================================== */
+    .opening-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: all;
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.75s;
+      overflow: hidden;
+    }
+
+    .opening-overlay.is-finished {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-already-played .opening-overlay,
+    .opening-overlay[hidden] {
+      display: none !important;
+    }
+
+    .opening-bg-glow {
+      position: absolute;
+      width: clamp(400px, 60vw, 750px);
+      height: clamp(400px, 60vw, 750px);
+      background: radial-gradient(circle, rgba(var(--accent-rgb), 0.22) 0%, rgba(6, 6, 8, 0.88) 65%, transparent 100%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(55px);
+      pointer-events: none;
+      animation: openingGlowPulse 2.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes openingGlowPulse {
+      0% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.65; }
+      100% { transform: translate(-50%, -50%) scale(1.18); opacity: 0.98; }
+    }
+
+    .opening-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      max-width: 1280px;
+      padding: 0 24px;
+    }
+
+    .opening-kicker {
+      font-family: var(--font-body);
+      font-size: clamp(0.72rem, 1.2vw, 0.90rem);
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: openingKickerIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    }
+
+    .opening-kicker span {
+      color: var(--accent-light);
+      text-shadow: 0 0 14px rgba(var(--accent-rgb), 0.6);
+    }
+
+    @keyframes openingKickerIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .opening-title-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: clamp(80px, 14vw, 150px);
+    }
+
+    .opening-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      text-transform: uppercase;
+      white-space: nowrap;
+      position: absolute;
+      user-select: none;
+      line-height: 1;
+    }
+
+    /* Word 1: PORTFOLIO */
+    .title-portfolio {
+      font-size: clamp(3.2rem, 10vw, 8.5rem);
+      letter-spacing: clamp(0.04em, 1vw, 0.14em);
+      background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.75) 70%, rgba(var(--accent-rgb), 0.45) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 35px rgba(var(--accent-rgb), 0.3);
+      opacity: 0;
+      transform: scale(0.9);
+      filter: blur(14px);
+      animation: openingPortfolioPhase 2.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @keyframes openingPortfolioPhase {
+      0% {
+        opacity: 0;
+        transform: scale(0.86);
+        filter: blur(16px);
+      }
+      18% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0px);
+      }
+      42% {
+        opacity: 1;
+        transform: scale(1.02);
+        filter: blur(0px);
+      }
+      54% {
+        opacity: 0.6;
+        transform: scale(1.06);
+        filter: blur(8px);
+      }
+      64%, 100% {
+        opacity: 0;
+        transform: scale(1.15);
+        filter: blur(22px);
+      }
+    }
+
+    /* Word 2: SHIVANSHU SATYAJEET */
+    .title-name {
+      font-size: clamp(2.2rem, 7vw, 6.2rem);
+      letter-spacing: clamp(0.02em, 0.6vw, 0.08em);
+      background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.88) 75%, rgba(var(--accent-rgb), 0.5) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(var(--accent-rgb), 0.35);
+      opacity: 0;
+      transform: scale(0.92);
+      filter: blur(18px);
+      animation: openingNamePhase 2.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes openingNamePhase {
+      0%, 46% {
+        opacity: 0;
+        transform: scale(0.90);
+        filter: blur(18px);
+      }
+      58% {
+        opacity: 0.9;
+        filter: blur(4px);
+      }
+      68%, 88% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0px);
+      }
+    }
+
+    /* Radiant Incandescent Energy Beam (Light Sweep) */
+    .energy-sweep {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      transform: translateY(-50%);
+      pointer-events: none;
+      animation: openingSweepAnim 2.7s ease-in-out forwards;
+    }
+
+    .sweep-flare {
+      position: absolute;
+      top: -24px;
+      left: -25%;
+      width: clamp(180px, 25vw, 320px);
+      height: 50px;
+      background: radial-gradient(ellipse at center, #ffffff 0%, rgba(255, 100, 110, 0.95) 25%, rgba(var(--accent-rgb), 0.7) 55%, transparent 100%);
+      filter: blur(7px);
+      box-shadow: 0 0 50px 12px rgba(var(--accent-rgb), 0.85), 0 0 100px 30px rgba(255, 50, 65, 0.45);
+      animation: openingFlareGlide 2.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes openingFlareGlide {
+      0%, 38% {
+        left: -30%;
+        opacity: 0;
+      }
+      45% {
+        opacity: 1;
+      }
+      62% {
+        left: 110%;
+        opacity: 1;
+      }
+      70%, 100% {
+        left: 120%;
+        opacity: 0;
+      }
+    }
+
+    @keyframes openingSweepAnim {
+      0%, 40% { opacity: 0; }
+      46%, 64% { opacity: 1; }
+      72%, 100% { opacity: 0; }
+    }
+
+    .opening-subline {
+      font-family: var(--font-body);
+      font-size: clamp(0.85rem, 1.4vw, 1.15rem);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.72);
+      margin-top: 16px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: openingSublineIn 2.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .opening-subline span {
+      color: var(--accent-main);
+      font-weight: 700;
+    }
+
+    @keyframes openingSublineIn {
+      0%, 65% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      78%, 100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Floating glowing embers */
+    .opening-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .opening-particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      filter: blur(1px);
+      box-shadow: 0 0 8px var(--accent-main);
+      opacity: 0;
+      animation: openingParticleFloat 2.4s ease-out infinite;
+    }
+
+    @keyframes openingParticleFloat {
+      0% { transform: translateY(20px) scale(0.5); opacity: 0; }
+      30% { opacity: 0.9; }
+      100% { transform: translateY(-80px) scale(1.4); opacity: 0; }
+    }
+
+    /* Accessible Dismiss / Skip Button */
+    
+    /* Top/Bottom Action controls bar */
+    .opening-actions {
+      position: absolute;
+      bottom: 26px;
+      right: 26px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 20;
+    }
+
+    .opening-ctrl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: background 0.2s, color 0.2s, transform 0.2s, border-color 0.2s;
+      user-select: none;
+    }
+
+    .opening-ctrl-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .opening-sound-btn.is-active {
+      border-color: rgba(var(--accent-rgb), 0.6);
+      background: rgba(var(--accent-rgb), 0.18);
+      color: #fff;
+    }
+
+    .opening-sound-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .opening-kicker .kicker-tag {
+      color: var(--accent-light);
+      text-shadow: 0 0 14px rgba(var(--accent-rgb), 0.6);
+    }
+
+    .opening-kicker .kicker-dot {
+      color: rgba(255, 255, 255, 0.4);
+      margin: 0 4px;
+    }
+
+    @media (max-width: 600px) {
+      .opening-actions {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        justify-content: space-between;
+      }
+      .opening-ctrl-btn {
+        padding: 6px 14px;
+        font-size: 0.70rem;
+      }
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+      .opening-overlay {
+        display: none !important;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
+
+  <!-- CINEMATIC OPENING HERO ANIMATION WITH SYNCHRONIZED SOUND -->
+  <div class="opening-overlay" id="opening-overlay" aria-hidden="true" role="presentation">
+    <div class="opening-bg-glow"></div>
+    <div class="opening-particles" id="opening-particles"></div>
+
+    <div class="opening-content">
+      <div class="opening-kicker">
+        <span class="kicker-tag">PORTFOLIO 2026</span> <span class="kicker-dot">·</span> <span>ENGINEERING &amp; AI</span>
+      </div>
+
+      <div class="opening-title-container">
+        <div class="opening-title title-portfolio" id="anim-title-portfolio">PORTFOLIO</div>
+        <div class="opening-title title-name" id="anim-title-name">SHIVANSHU SATYAJEET</div>
+        <div class="energy-sweep" id="anim-energy-sweep">
+          <div class="sweep-flare" id="anim-sweep-flare"></div>
+        </div>
+      </div>
+
+      <div class="opening-subline" id="anim-opening-subline">
+        Software Developer <span>·</span> AI &amp; Data Science
+      </div>
+    </div>
+
+    <!-- Opening Action Controls (Sound & Skip) -->
+    <div class="opening-actions" role="toolbar" aria-label="Intro animation controls">
+      <button type="button" class="opening-ctrl-btn opening-sound-btn is-active" id="opening-sound-btn" aria-label="Toggle intro sound" title="Toggle sound" aria-pressed="true">
+        <span class="opening-sound-icon" id="opening-sound-icon" aria-hidden="true">
+          <svg class="sound-svg sound-svg-on" id="sound-svg-on" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <svg class="sound-svg sound-svg-off" id="sound-svg-off" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </span>
+        <span id="opening-sound-label">Sound: On</span>
+      </button>
+      <button type="button" class="opening-ctrl-btn opening-skip-btn" id="opening-skip-btn" aria-label="Skip intro animation">
+        <span>Skip</span> <span aria-hidden="true">↗</span>
+      </button>
+    </div>
+  </div>
+
   <!-- SLIM JOURNEY PROGRESS BAR -->
   <div class="journey-indicator" aria-hidden="true">
     <div class="journey-progress-bar" id="journey-progress-bar"></div>
@@ -5136,6 +5540,281 @@
           positionPopover();
         }
       }, { passive: true });
+
+      
+      /* ==========================================================================
+         CINEMATIC OPENING ANIMATION CONTROLLER WITH SYNCHRONIZED WEB AUDIO
+         ========================================================================== */
+      (function initOpeningAnimationSystem() {
+        const overlay = document.getElementById('opening-overlay');
+        const skipBtn = document.getElementById('opening-skip-btn');
+        const soundBtn = document.getElementById('opening-sound-btn');
+        const soundLabel = document.getElementById('opening-sound-label');
+        const soundIconOn = document.getElementById('sound-svg-on');
+        const soundIconOff = document.getElementById('sound-svg-off');
+
+        if (!overlay) return;
+
+        let audioCtx = null;
+        const storedSoundPref = localStorage.getItem('portfolio-sound-enabled');
+        let isSoundEnabled = storedSoundPref !== null ? storedSoundPref === 'true' : true;
+        let autoPlayTimer = null;
+        let isAnimating = false;
+
+        function getAudioContext() {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          return audioCtx;
+        }
+
+        /* 
+           SYNTHESIZED CINEMATIC SOUND SEQUENCE:
+           1. 0.0s - 1.2s: Subtle cinematic synth rise
+           2. 0.9s - 1.9s: Smooth energy whoosh / transition sweep
+           3. 1.7s - 2.8s: Soft low impact sub-bass settlement
+        */
+        function playCinematicAudio(offsetSeconds = 0) {
+          if (!isSoundEnabled) return;
+          try {
+            const ctx = getAudioContext();
+            const start = ctx.currentTime + Math.max(0, offsetSeconds);
+            const master = ctx.createGain();
+            master.gain.setValueAtTime(0.20, start); // pleasant, quiet volume
+            master.connect(ctx.destination);
+
+            // 1. Synth Rise (Warm detuned dual-oscillator drone + lowpass sweep)
+            const osc1 = ctx.createOscillator();
+            const osc2 = ctx.createOscillator();
+            const filter = ctx.createBiquadFilter();
+            const gain = ctx.createGain();
+
+            osc1.type = 'sawtooth';
+            osc1.frequency.setValueAtTime(65.4, start);
+            osc1.frequency.exponentialRampToValueAtTime(130.8, start + 1.2);
+
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(65.0, start);
+            osc2.frequency.exponentialRampToValueAtTime(131.2, start + 1.2);
+
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(110, start);
+            filter.frequency.exponentialRampToValueAtTime(850, start + 1.15);
+            filter.Q.value = 2.0;
+
+            gain.gain.setValueAtTime(0.001, start);
+            gain.gain.exponentialRampToValueAtTime(0.65, start + 0.8);
+            gain.gain.exponentialRampToValueAtTime(0.001, start + 1.4);
+
+            osc1.connect(filter);
+            osc2.connect(filter);
+            filter.connect(gain);
+            gain.connect(master);
+
+            osc1.start(start);
+            osc2.start(start);
+            osc1.stop(start + 1.5);
+            osc2.stop(start + 1.5);
+
+            // 2. Whoosh Transition (Resonant bandpass swept pink/white noise)
+            const bufSize = ctx.sampleRate * 1.5;
+            const noiseBuf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+            const data = noiseBuf.getChannelData(0);
+            for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+
+            const noise = ctx.createBufferSource();
+            noise.buffer = noiseBuf;
+
+            const wFilter = ctx.createBiquadFilter();
+            wFilter.type = 'bandpass';
+            wFilter.frequency.setValueAtTime(260, start + 0.85);
+            wFilter.frequency.exponentialRampToValueAtTime(1900, start + 1.35);
+            wFilter.frequency.exponentialRampToValueAtTime(320, start + 1.85);
+            wFilter.Q.value = 3.2;
+
+            const wGain = ctx.createGain();
+            wGain.gain.setValueAtTime(0.001, start + 0.85);
+            wGain.gain.exponentialRampToValueAtTime(0.80, start + 1.3);
+            wGain.gain.exponentialRampToValueAtTime(0.001, start + 1.9);
+
+            noise.connect(wFilter);
+            wFilter.connect(wGain);
+            wGain.connect(master);
+            noise.start(start + 0.85);
+            noise.stop(start + 2.0);
+
+            // 3. Soft Low Impact Thud (Sub-bass drop + high sparkle resolution)
+            const sub = ctx.createOscillator();
+            const subF = ctx.createBiquadFilter();
+            const subG = ctx.createGain();
+
+            sub.type = 'sine';
+            sub.frequency.setValueAtTime(88, start + 1.65);
+            sub.frequency.exponentialRampToValueAtTime(36, start + 2.45);
+
+            subF.type = 'lowpass';
+            subF.frequency.setValueAtTime(180, start + 1.65);
+            subF.frequency.linearRampToValueAtTime(55, start + 2.5);
+
+            subG.gain.setValueAtTime(0.001, start + 1.65);
+            subG.gain.linearRampToValueAtTime(0.85, start + 1.72);
+            subG.gain.exponentialRampToValueAtTime(0.001, start + 2.75);
+
+            sub.connect(subF);
+            subF.connect(subG);
+            subG.connect(master);
+            sub.start(start + 1.65);
+            sub.stop(start + 2.85);
+
+            // 3b. Subtle high harmonic sparkle accent (bell chime)
+            const chime = ctx.createOscillator();
+            const chimeG = ctx.createGain();
+            chime.type = 'sine';
+            chime.frequency.setValueAtTime(1046.5, start + 1.68); // High C
+            chimeG.gain.setValueAtTime(0.001, start + 1.68);
+            chimeG.gain.linearRampToValueAtTime(0.10, start + 1.72);
+            chimeG.gain.exponentialRampToValueAtTime(0.001, start + 2.15);
+            chime.connect(chimeG);
+            chimeG.connect(master);
+            chime.start(start + 1.68);
+            chime.stop(start + 2.2);
+          } catch(e) {
+            console.warn('Audio synthesis notice:', e);
+          }
+        }
+
+        function updateSoundControlUI() {
+          if (!soundBtn) return;
+          soundBtn.classList.toggle('is-active', isSoundEnabled);
+          soundBtn.setAttribute('aria-pressed', isSoundEnabled ? 'true' : 'false');
+          if (soundLabel) soundLabel.textContent = isSoundEnabled ? 'Sound: On' : 'Sound: Off';
+          if (soundIconOn) soundIconOn.style.display = isSoundEnabled ? 'inline-block' : 'none';
+          if (soundIconOff) soundIconOff.style.display = isSoundEnabled ? 'none' : 'inline-block';
+        }
+
+        function toggleSound() {
+          isSoundEnabled = !isSoundEnabled;
+          try {
+            localStorage.setItem('portfolio-sound-enabled', String(isSoundEnabled));
+          } catch(e) {}
+          updateSoundControlUI();
+
+          if (isSoundEnabled) {
+            getAudioContext();
+            if (isAnimating) {
+              playCinematicAudio();
+            }
+          }
+        }
+
+        if (soundBtn) {
+          soundBtn.addEventListener('click', e => {
+            e.stopPropagation();
+            toggleSound();
+          });
+        }
+
+        // Spawn ambient particles
+        const particlesContainer = document.getElementById('opening-particles');
+        if (particlesContainer && particlesContainer.childElementCount === 0) {
+          for (let i = 0; i < 24; i++) {
+            const p = document.createElement('div');
+            p.className = 'opening-particle';
+            p.style.left = (Math.random() * 100) + '%';
+            p.style.top = (45 + Math.random() * 35) + '%';
+            p.style.animationDelay = (Math.random() * 2) + 's';
+            p.style.animationDuration = (1.8 + Math.random() * 1.5) + 's';
+            particlesContainer.appendChild(p);
+          }
+        }
+
+        function finishIntro() {
+          if (!isAnimating) return;
+          isAnimating = false;
+          clearTimeout(autoPlayTimer);
+          try {
+            sessionStorage.setItem('portfolio-opening-played', 'true');
+          } catch(e) {}
+          overlay.classList.add('is-finished');
+          setTimeout(() => {
+            overlay.style.display = 'none';
+            overlay.setAttribute('hidden', '');
+          }, 750);
+        }
+
+        function runIntroSequence(forceAudio = false) {
+          isAnimating = true;
+          clearTimeout(autoPlayTimer);
+
+          if (forceAudio) {
+            isSoundEnabled = true;
+            try { localStorage.setItem('portfolio-sound-enabled', 'true'); } catch(e) {}
+          }
+          updateSoundControlUI();
+
+          overlay.removeAttribute('hidden');
+          overlay.style.display = 'flex';
+          overlay.classList.remove('is-finished');
+
+          // Trigger reflow to restart CSS keyframe animations
+          const tPort = document.getElementById('anim-title-portfolio');
+          const tName = document.getElementById('anim-title-name');
+          const tSweep = document.getElementById('anim-sweep-flare');
+          const tSub = document.getElementById('anim-opening-subline');
+          [tPort, tName, tSweep, tSub].forEach(el => {
+            if (el) {
+              el.style.animation = 'none';
+              void el.offsetWidth;
+              el.style.animation = '';
+            }
+          });
+
+          // Play synchronized audio if enabled
+          if (isSoundEnabled) {
+            playCinematicAudio(0.05);
+          }
+
+          autoPlayTimer = setTimeout(finishIntro, 2850);
+        }
+
+        if (skipBtn) {
+          skipBtn.addEventListener('click', finishIntro);
+        }
+
+        // Resume audio if visitor interacts with page while intro is animating and sound was enabled
+        const unlockOnUserGesture = () => {
+          if (audioCtx && audioCtx.state === 'suspended' && isSoundEnabled && isAnimating) {
+            audioCtx.resume();
+          }
+        };
+        window.addEventListener('click', unlockOnUserGesture, { passive: true });
+        window.addEventListener('touchstart', unlockOnUserGesture, { passive: true });
+
+        // Dismiss on user scroll or keyboard action
+        const onUserDismiss = () => {
+          if (isAnimating) finishIntro();
+        };
+        window.addEventListener('wheel', onUserDismiss, { passive: true });
+        window.addEventListener('keydown', e => {
+          if (e.key === 'Escape' || e.key === ' ' || e.key === 'ArrowDown') onUserDismiss();
+        });
+
+        // Initial launch check
+        const alreadyPlayed = sessionStorage.getItem('portfolio-opening-played');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (alreadyPlayed || reducedMotion) {
+          overlay.classList.add('is-finished');
+          overlay.style.display = 'none';
+          overlay.setAttribute('hidden', '');
+          isAnimating = false;
+        } else {
+          runIntroSequence();
+        }
+      })();
 
       // Apply initial theme
       applyTheme(currentTheme);
