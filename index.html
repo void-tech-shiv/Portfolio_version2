@@ -14,6 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="./">
   <title>Shivanshu Satyajeet — Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/photos/brand-avatar.svg?v=1">
   <meta name="description"
     content="Software Developer and AI & Data Science student building practical tools, modern websites, and software systems.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -611,19 +612,16 @@
     }
 
     .brand-mark {
-      display: grid;
-      place-items: center;
+      display: block;
       width: 36px;
       height: 36px;
+      flex: 0 0 36px;
       border-radius: 50%;
-      background: linear-gradient(145deg, var(--accent-light) 0%, var(--accent-main) 48%, var(--accent-dark) 100%);
+      object-fit: cover;
+      object-position: center 22%;
+      background: #060608;
       border: 1px solid rgba(255, 255, 255, 0.45);
       border-top-color: rgba(255, 255, 255, 0.85);
-      font-family: var(--font-heading);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #ffffff;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
       box-shadow:
         0 4px 16px rgba(var(--accent-deep-rgb), 0.5),
         inset 0 1.6px 1px 0 rgba(255, 255, 255, 0.8),
@@ -3479,7 +3477,7 @@
     <!-- STREAMLINED SITE HEADER (BRANDING & CONTACT ACTION ACCESSIBLE WITHOUT DUPLICATE NAV) -->
     <header class="site-header">
       <a class="brand" href="#home" aria-label="Shivanshu Satyajeet portfolio home">
-        <span class="brand-mark">SS</span>
+        <img class="brand-mark" src="assets/photos/brand-avatar.svg" alt="" aria-hidden="true">
         <span>PORTFOLIO</span>
       </a>
       <a class="header-contact" href="#contact" aria-label="Contact Shivanshu Satyajeet">
@@ -5007,3 +5005,4 @@
 </body>
 
 </html>
+
