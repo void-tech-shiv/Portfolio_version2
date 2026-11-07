@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Shivanshu Satyajeet</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#060608">
+  <link rel="icon" type="image/svg+xml" href="./assets/photos/brand-avatar.svg?v=1">
+  <link rel="canonical" href="https://www.codedev.co.in/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background-color: #060608;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bg-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(235, 30, 45, 0.12) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .card {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      width: 100%;
+      padding: 44px 36px;
+      background: rgba(18, 14, 18, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(235, 30, 45, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      text-align: center;
+    }
+    .tag {
+      display: inline-block;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #ff3344;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3.2rem, 8vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, #ffffff 50%, rgba(255, 255, 255, 0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      color: #94a3b8;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 12px 26px;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(239, 68, 68, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(239, 68, 68, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <main class="card">
+    <span class="tag">Error 404</span>
+    <h1>404</h1>
+    <p>The page you are looking for does not exist, has been moved, or the link may be out of date.</p>
+    <a class="btn" href="./">
+      <span>Return to Portfolio</span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </main>
+</body>
+</html>
+

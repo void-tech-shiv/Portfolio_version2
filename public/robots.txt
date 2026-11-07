@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://itsupportshiv.vercel.app/sitemap.xml
+Sitemap: https://www.codedev.co.in/sitemap.xml
