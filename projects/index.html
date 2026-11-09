@@ -4,21 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <script>
-    (function() {
+    (function () {
       try {
         var t = localStorage.getItem('portfolio-accent-theme') || 'red';
         document.documentElement.setAttribute('data-theme', t);
+        var s = localStorage.getItem('portfolio-snow-enabled');
+        if (s === 'false') {
+          document.documentElement.setAttribute('data-snow', 'false');
+        }
         if (sessionStorage.getItem('portfolio-opening-played') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           document.documentElement.classList.add('intro-already-played');
         }
-      } catch(e) {}
+      } catch (e) { }
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="../">
   <title>Shivanshu Satyajeet | Software Developer &amp; AI Portfolio</title>
   <link rel="icon" type="image/svg+xml" href="./assets/photos/brand-avatar.svg?v=1">
-  <meta name="description" content="Shivanshu Satyajeet is a software developer and AI &amp; Data Science student at KL University building web applications, AI tools, cybersecurity platforms, and production systems.">
+  <meta name="description"
+    content="Shivanshu Satyajeet is a software developer and AI &amp; Data Science student at KL University building web applications, AI tools, cybersecurity platforms, and production systems.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#060608">
   <link rel="canonical" href="https://www.codedev.co.in/">
@@ -26,7 +31,8 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Shivanshu Satyajeet — Portfolio">
   <meta property="og:title" content="Shivanshu Satyajeet | Software Developer &amp; AI Portfolio">
-  <meta property="og:description" content="Portfolio of Shivanshu Satyajeet, software developer and AI &amp; Data Science student at KL University. Explore featured software, AI, web, and cybersecurity projects.">
+  <meta property="og:description"
+    content="Portfolio of Shivanshu Satyajeet, software developer and AI &amp; Data Science student at KL University. Explore featured software, AI, web, and cybersecurity projects.">
   <meta property="og:url" content="https://www.codedev.co.in/">
   <meta property="og:image" content="https://www.codedev.co.in/assets/photos/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -38,7 +44,8 @@
   <meta name="twitter:site" content="@xt_shivanshu">
   <meta name="twitter:creator" content="@xt_shivanshu">
   <meta name="twitter:title" content="Shivanshu Satyajeet | Software Developer &amp; AI Portfolio">
-  <meta name="twitter:description" content="Software developer and AI &amp; Data Science student at KL University building web applications, AI tools, and production software.">
+  <meta name="twitter:description"
+    content="Software developer and AI &amp; Data Science student at KL University building web applications, AI tools, and production software.">
   <meta name="twitter:image" content="https://www.codedev.co.in/assets/photos/og-image.jpg">
   <meta name="twitter:image:alt" content="Shivanshu Satyajeet — Software Developer and AI Portfolio">
   <script type="application/ld+json">
@@ -285,6 +292,62 @@
       --accent-glow-strong: hsla(var(--rgb-h), 90%, 60%, 0.7);
       --card-border-hover: hsla(var(--rgb-h), 90%, 60%, 0.48);
       --btn-primary-text: #ffffff;
+    }
+
+    /* 8. WINTER THEME (ICY BLUE, SOFT WHITE, SILVER, DEEP CHARCOAL) */
+    html[data-theme="winter"] {
+      --theme-name: 'winter';
+      --accent-main: #38bdf8;
+      --accent-deep: #0284c7;
+      --accent-light: #bae6fd;
+      --accent-dark: #0369a1;
+      --accent-rgb: 56, 189, 248;
+      --accent-deep-rgb: 2, 132, 199;
+      --accent-light-rgb: 186, 230, 253;
+      --accent-dark-rgb: 3, 105, 161;
+      --accent-glow: rgba(56, 189, 248, 0.35);
+      --accent-glow-strong: rgba(186, 230, 253, 0.7);
+      --card-border-hover: rgba(186, 230, 253, 0.55);
+      --btn-primary-text: #031326;
+    }
+
+    /* Winter Theme Frost Highlights & Accents */
+    html[data-theme="winter"] .button-primary {
+      background: linear-gradient(180deg, #bae6fd 0%, #38bdf8 45%, #0284c7 100%) !important;
+      color: #031326 !important;
+      border-color: rgba(255, 255, 255, 0.65) !important;
+      border-top-color: #ffffff !important;
+      box-shadow: 0 10px 24px rgba(2, 132, 199, 0.4), inset 0 1.5px 1px 0 #ffffff !important;
+    }
+
+    html[data-theme="winter"] .button-primary:hover {
+      background: linear-gradient(180deg, #ffffff 0%, #7dd3fc 45%, #0284c7 100%) !important;
+      box-shadow: 0 14px 30px rgba(56, 189, 248, 0.55), inset 0 1.5px 1px 0 #ffffff !important;
+    }
+
+    html[data-theme="winter"] .project-card,
+    html[data-theme="winter"] .experience-item,
+    html[data-theme="winter"] .cert-card,
+    html[data-theme="winter"] .skill-chip {
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.05) 0%, rgba(12, 18, 28, 0.8) 45%, rgba(6, 10, 16, 0.95) 100%);
+      border-color: rgba(186, 230, 253, 0.16);
+      border-top-color: rgba(255, 255, 255, 0.4);
+    }
+
+    html[data-theme="winter"] .project-card:hover,
+    html[data-theme="winter"] .experience-item:hover,
+    html[data-theme="winter"] .cert-card:hover,
+    html[data-theme="winter"] .skill-chip:hover {
+      border-color: rgba(186, 230, 253, 0.5);
+      border-top-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 24px rgba(56, 189, 248, 0.22), inset 0 1.2px 0 rgba(255, 255, 255, 0.45);
+    }
+
+    html[data-theme="winter"] .glass-sidebar {
+      background: linear-gradient(165deg, rgba(255, 255, 255, 0.08) 0%, rgba(10, 16, 24, 0.82) 45%, rgba(4, 8, 12, 0.95) 100%);
+      border-color: rgba(186, 230, 253, 0.22);
+      border-top-color: rgba(255, 255, 255, 0.55);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(56, 189, 248, 0.12), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55);
     }
 
     *,
@@ -3082,7 +3145,7 @@
         transform: none !important;
       }
     }
-  
+
     /* ==========================================================================
        THEME PICKER CONTROL & SWATCHES POPOVER
        ========================================================================== */
@@ -3223,8 +3286,8 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.3s ease;
+        transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.3s ease;
     }
 
     .theme-swatch-popover.active {
@@ -3330,8 +3393,13 @@
     }
 
     @keyframes rgbSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -3382,6 +3450,331 @@
       transform: scale(1);
     }
 
+    /* WINTER THEME: SOFT FALLING SNOW CANVAS */
+    .winter-snow-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+    }
+
+    /* WINTER THEME: CURSOR SNOW PARTICLES CANVAS */
+    .winter-cursor-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 200;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+    }
+
+    html[data-theme="winter"]:not([data-snow="false"]) .winter-snow-canvas {
+      opacity: 0.96;
+      visibility: visible;
+    }
+
+    html[data-theme="winter"]:not([data-snow="false"]) .winter-cursor-canvas {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .winter-snow-canvas,
+      .winter-cursor-canvas {
+        display: none !important;
+      }
+    }
+
+    /* THEME POPOVER: WINTER SNOWFALL TOGGLE ROW */
+    .theme-snow-row {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      margin-top: 12px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(186, 230, 253, 0.08) 0%, rgba(2, 132, 199, 0.14) 100%);
+      border: 1px solid rgba(186, 230, 253, 0.24);
+      border-top-color: rgba(255, 255, 255, 0.45);
+    }
+
+    html[data-theme="winter"] .theme-snow-row {
+      display: flex;
+    }
+
+    .theme-snow-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .theme-snow-icon {
+      font-size: 1.15rem;
+      color: #bae6fd;
+      filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.6));
+    }
+
+    .theme-snow-title {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    .theme-snow-sub {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .theme-snow-toggle-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: 48px;
+      height: 26px;
+      padding: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+    }
+
+    .theme-snow-toggle-btn[aria-checked="true"] {
+      background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+      border-color: rgba(255, 255, 255, 0.65);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.55);
+    }
+
+    .snow-toggle-pill {
+      display: block;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+      transform: translateX(0);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .theme-snow-toggle-btn[aria-checked="true"] .snow-toggle-pill {
+      transform: translateX(22px);
+    }
+
+    /* SIDEBAR COMPACT DATE & LIVE CLOCK */
+    .sidebar-clock-widget {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      margin-top: 6px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-top-color: rgba(255, 255, 255, 0.18);
+      color: var(--text-muted);
+      user-select: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sidebar-clock-widget:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(var(--accent-rgb), 0.35);
+      border-top-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .sidebar-clock-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .sidebar-clock-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      color: var(--accent-light);
+      flex-shrink: 0;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .sidebar-clock-widget:hover .sidebar-clock-icon {
+      transform: rotate(30deg);
+      color: #ffffff;
+    }
+
+    .sidebar-clock-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      min-width: 0;
+    }
+
+    .sidebar-clock-time {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .sidebar-clock-date {
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sidebar-clock-widget .sidebar-tooltip {
+      display: none;
+    }
+
+    /* COLLAPSED SIDEBAR: CLOCK DISPLAY */
+    .glass-sidebar.collapsed .sidebar-clock-widget {
+      justify-content: center;
+      padding: 8px 0;
+      background: transparent;
+      border: 1px solid transparent;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .glass-sidebar.collapsed .sidebar-clock-widget:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+
+    .glass-sidebar.collapsed .sidebar-clock-inner {
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .glass-sidebar.collapsed .sidebar-clock-date {
+      display: none;
+    }
+
+    .glass-sidebar.collapsed .sidebar-clock-time {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      max-width: 56px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .glass-sidebar.collapsed .sidebar-clock-widget .sidebar-tooltip {
+      display: block;
+      position: absolute;
+      left: calc(100% + 14px);
+      top: 50%;
+      transform: translateY(-50%) translateX(-4px);
+      background: linear-gradient(165deg, rgba(26, 14, 18, 0.96) 0%, rgba(10, 8, 10, 0.98) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-top-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 2px 8px var(--accent-glow);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 200;
+    }
+
+    .glass-sidebar.collapsed .sidebar-clock-widget:hover .sidebar-tooltip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    /* TABLET AUTO-COLLAPSE (769px to 1200px) */
+    @media (min-width: 769px) and (max-width: 1200px) {
+      .glass-sidebar .sidebar-clock-widget {
+        justify-content: center;
+        padding: 8px 0;
+        background: transparent;
+        border: 1px solid transparent;
+        width: 100%;
+        margin-top: 4px;
+      }
+
+      .glass-sidebar .sidebar-clock-inner {
+        flex-direction: column;
+        justify-content: center;
+        gap: 2px;
+      }
+
+      .glass-sidebar .sidebar-clock-date {
+        display: none;
+      }
+
+      .glass-sidebar .sidebar-clock-time {
+        font-size: 0.58rem;
+      }
+
+      .glass-sidebar .sidebar-clock-widget .sidebar-tooltip {
+        display: block;
+        position: absolute;
+        left: calc(100% + 14px);
+        top: 50%;
+        transform: translateY(-50%) translateX(-4px);
+        background: linear-gradient(165deg, rgba(26, 14, 18, 0.96) 0%, rgba(10, 8, 10, 0.98) 100%);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-top-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 2px 8px var(--accent-glow);
+        border-radius: 8px;
+        padding: 5px 12px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: #ffffff;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+        z-index: 200;
+      }
+
+      .glass-sidebar .sidebar-clock-widget:hover .sidebar-tooltip {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+
     /* Primary button contrast guarantee */
     .button-primary,
     .header-cta,
@@ -3429,6 +3822,49 @@
         width: 6px;
         height: 6px;
         margin-left: 0;
+      }
+
+      .sidebar-clock-widget {
+        flex-direction: column;
+        padding: 4px 2px;
+        margin-top: 0;
+        gap: 1px;
+        border-radius: 12px;
+        flex: 1;
+        min-width: 0;
+        text-align: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+      }
+
+      .sidebar-clock-widget:hover {
+        background: transparent;
+        transform: none;
+      }
+
+      .sidebar-clock-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+      }
+
+      .sidebar-clock-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      .sidebar-clock-time {
+        font-size: 0.54rem;
+        font-weight: 700;
+        line-height: 1.1;
+      }
+
+      .sidebar-clock-date {
+        font-size: 0.46rem;
+        letter-spacing: 0.01em;
+        line-height: 1;
+        max-width: 48px;
       }
 
       .theme-swatch-popover {
@@ -3489,8 +3925,15 @@
     }
 
     @keyframes openingGlowPulse {
-      0% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.65; }
-      100% { transform: translate(-50%, -50%) scale(1.18); opacity: 0.98; }
+      0% {
+        transform: translate(-50%, -50%) scale(0.92);
+        opacity: 0.65;
+      }
+
+      100% {
+        transform: translate(-50%, -50%) scale(1.18);
+        opacity: 0.98;
+      }
     }
 
     .opening-content {
@@ -3525,7 +3968,10 @@
     }
 
     @keyframes openingKickerIn {
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .opening-title-container {
@@ -3567,22 +4013,27 @@
         transform: scale(0.86);
         filter: blur(16px);
       }
+
       18% {
         opacity: 1;
         transform: scale(1);
         filter: blur(0px);
       }
+
       42% {
         opacity: 1;
         transform: scale(1.02);
         filter: blur(0px);
       }
+
       54% {
         opacity: 0.6;
         transform: scale(1.06);
         filter: blur(8px);
       }
-      64%, 100% {
+
+      64%,
+      100% {
         opacity: 0;
         transform: scale(1.15);
         filter: blur(22px);
@@ -3604,20 +4055,26 @@
     }
 
     @keyframes openingNamePhase {
-      0%, 46% {
+
+      0%,
+      46% {
         opacity: 0;
         transform: scale(0.90);
         filter: blur(18px);
       }
+
       58% {
         opacity: 0.9;
         filter: blur(4px);
       }
-      68%, 88% {
+
+      68%,
+      88% {
         opacity: 1;
         transform: scale(1);
         filter: blur(0px);
       }
+
       100% {
         opacity: 1;
         transform: scale(1);
@@ -3650,27 +4107,45 @@
     }
 
     @keyframes openingFlareGlide {
-      0%, 38% {
+
+      0%,
+      38% {
         left: -30%;
         opacity: 0;
       }
+
       45% {
         opacity: 1;
       }
+
       62% {
         left: 110%;
         opacity: 1;
       }
-      70%, 100% {
+
+      70%,
+      100% {
         left: 120%;
         opacity: 0;
       }
     }
 
     @keyframes openingSweepAnim {
-      0%, 40% { opacity: 0; }
-      46%, 64% { opacity: 1; }
-      72%, 100% { opacity: 0; }
+
+      0%,
+      40% {
+        opacity: 0;
+      }
+
+      46%,
+      64% {
+        opacity: 1;
+      }
+
+      72%,
+      100% {
+        opacity: 0;
+      }
     }
 
     .opening-subline {
@@ -3690,11 +4165,15 @@
     }
 
     @keyframes openingSublineIn {
-      0%, 65% {
+
+      0%,
+      65% {
         opacity: 0;
         transform: translateY(12px);
       }
-      78%, 100% {
+
+      78%,
+      100% {
         opacity: 1;
         transform: translateY(0);
       }
@@ -3722,13 +4201,23 @@
     }
 
     @keyframes openingParticleFloat {
-      0% { transform: translateY(20px) scale(0.5); opacity: 0; }
-      30% { opacity: 0.9; }
-      100% { transform: translateY(-80px) scale(1.4); opacity: 0; }
+      0% {
+        transform: translateY(20px) scale(0.5);
+        opacity: 0;
+      }
+
+      30% {
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(-80px) scale(1.4);
+        opacity: 0;
+      }
     }
 
     /* Accessible Dismiss / Skip Button */
-    
+
     /* Top/Bottom Action controls bar */
     .opening-actions {
       position: absolute;
@@ -3796,6 +4285,7 @@
         left: 20px;
         justify-content: space-between;
       }
+
       .opening-ctrl-btn {
         padding: 6px 14px;
         font-size: 0.70rem;
@@ -3808,7 +4298,6 @@
         display: none !important;
       }
     }
-
   </style>
 </head>
 
@@ -3821,7 +4310,8 @@
 
     <div class="opening-content">
       <div class="opening-kicker">
-        <span class="kicker-tag">PORTFOLIO 2026</span> <span class="kicker-dot">·</span> <span>ENGINEERING &amp; AI</span>
+        <span class="kicker-tag">PORTFOLIO 2026</span> <span class="kicker-dot">·</span> <span>ENGINEERING &amp;
+          AI</span>
       </div>
 
       <div class="opening-title-container">
@@ -3839,14 +4329,26 @@
 
     <!-- Opening Action Controls (Sound & Skip) -->
     <div class="opening-actions" role="toolbar" aria-label="Intro animation controls">
-      <button type="button" class="opening-ctrl-btn opening-sound-btn is-active" id="opening-sound-btn" aria-label="Toggle intro sound" title="Toggle sound" aria-pressed="true">
+      <button type="button" class="opening-ctrl-btn opening-sound-btn is-active" id="opening-sound-btn"
+        aria-label="Toggle intro sound" title="Toggle sound" aria-pressed="true">
         <span class="opening-sound-icon" id="opening-sound-icon" aria-hidden="true">
-          <svg class="sound-svg sound-svg-on" id="sound-svg-on" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          <svg class="sound-svg sound-svg-off" id="sound-svg-off" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          <svg class="sound-svg sound-svg-on" id="sound-svg-on" viewBox="0 0 24 24" width="14" height="14" fill="none"
+            stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+          </svg>
+          <svg class="sound-svg sound-svg-off" id="sound-svg-off" viewBox="0 0 24 24" width="14" height="14" fill="none"
+            stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+            style="display:none;">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <line x1="23" y1="9" x2="17" y2="15" />
+            <line x1="17" y1="9" x2="23" y2="15" />
+          </svg>
         </span>
         <span id="opening-sound-label">Sound: On</span>
       </button>
-      <button type="button" class="opening-ctrl-btn opening-skip-btn" id="opening-skip-btn" aria-label="Skip intro animation">
+      <button type="button" class="opening-ctrl-btn opening-skip-btn" id="opening-skip-btn"
+        aria-label="Skip intro animation">
         <span>Skip</span> <span aria-hidden="true">↗</span>
       </button>
     </div>
@@ -3862,6 +4364,11 @@
   <div class="ambient-glow" aria-hidden="true"></div>
   <div class="cinematic-vignette" aria-hidden="true"></div>
   <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- WINTER SNOW PARTICLES CANVAS (Active only on Winter Theme - Background Layer) -->
+  <canvas class="winter-snow-canvas" id="winter-snow-canvas" aria-hidden="true"></canvas>
+  <!-- WINTER CURSOR SNOW TRAIL CANVAS (Active only on Winter Theme - Pointer Layer) -->
+  <canvas class="winter-cursor-canvas" id="winter-cursor-canvas" aria-hidden="true"></canvas>
 
   <!-- FIXED GLASS SIDEBAR (SECTION NAVIGATION) -->
   <aside class="glass-sidebar" id="glass-sidebar" aria-label="Portfolio sections navigation">
@@ -3943,7 +4450,7 @@
         <span class="sidebar-label">Contact</span>
         <span class="sidebar-tooltip">Contact</span>
       </a>
-    
+
       <div class="sidebar-divider" aria-hidden="true"></div>
       <button type="button" class="sidebar-link sidebar-theme-btn" id="sidebar-theme-btn" aria-haspopup="dialog"
         aria-expanded="false" aria-controls="theme-swatch-popover" aria-label="Open color themes" title="Change theme">
@@ -3954,13 +4461,32 @@
             <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
             <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
             <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
-            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z" />
+            <path
+              d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z" />
           </svg>
         </span>
         <span class="sidebar-label">Theme</span>
         <span class="theme-dot-preview" id="theme-dot-preview" aria-hidden="true"></span>
         <span class="sidebar-tooltip" id="theme-tooltip-text">Theme: Red</span>
       </button>
+
+      <!-- Compact Date & Live Clock -->
+      <div class="sidebar-clock-widget" id="sidebar-clock-widget" aria-label="Local date and live time" role="status">
+        <div class="sidebar-clock-inner">
+          <span class="sidebar-clock-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </span>
+          <div class="sidebar-clock-text">
+            <span class="sidebar-clock-time" id="sidebar-clock-time">--:--</span>
+            <span class="sidebar-clock-date" id="sidebar-clock-date">---, --- --</span>
+          </div>
+        </div>
+        <span class="sidebar-tooltip clock-tooltip" id="sidebar-clock-tooltip">Local Time</span>
+      </div>
     </nav>
   </aside>
 
@@ -3973,7 +4499,8 @@
         <h3 class="theme-popover-title" id="theme-popover-title">Select Theme</h3>
       </div>
       <button class="theme-popover-close" id="theme-popover-close" type="button" aria-label="Close theme picker">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -3981,6 +4508,20 @@
     </div>
     <div class="theme-swatches-list" role="radiogroup" aria-label="Available color themes">
       <!-- Injected by JavaScript -->
+    </div>
+    <!-- Winter Snowfall Toggle -->
+    <div class="theme-snow-row" id="theme-snow-row">
+      <div class="theme-snow-info">
+        <span class="theme-snow-icon" aria-hidden="true">❄</span>
+        <div>
+          <span class="theme-snow-title">Winter Snowfall</span>
+          <span class="theme-snow-sub">Falling frost particles</span>
+        </div>
+      </div>
+      <button type="button" class="theme-snow-toggle-btn" id="theme-snow-toggle-btn" role="switch" aria-checked="true"
+        aria-label="Toggle Winter snowfall">
+        <span class="snow-toggle-pill" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
 
@@ -4025,8 +4566,8 @@
             <div class="portrait-center" aria-hidden="true">
               <div class="portrait-halo-wrap">
                 <div class="portrait-halo"></div>
-                <img class="portrait-photo-img active" id="portrait-photo" src="assets/photos/portrait.png" width="1254" height="1254" fetchpriority="high"
-                  alt="Portrait of Shivanshu Satyajeet">
+                <img class="portrait-photo-img active" id="portrait-photo" src="assets/photos/portrait.png" width="1254"
+                  height="1254" fetchpriority="high" alt="Portrait of Shivanshu Satyajeet">
               </div>
 
               <div class="portrait-view-toggle" role="group" aria-label="Hero view selector">
@@ -4090,12 +4631,41 @@
 
         <div class="skills-layout">
           <div class="skill-grid" id="skill-grid">
-          <div class="skill-card"><p class="skill-card-kicker">01 / SKILL SET</p><h3>PROGRAMMING</h3><div class="skill-pills"><span>Java</span><span>Python</span><span>JavaScript</span><span>TypeScript</span><span>C</span></div></div>
-          <div class="skill-card"><p class="skill-card-kicker">02 / SKILL SET</p><h3>WEB DEVELOPMENT</h3><div class="skill-pills"><span>React</span><span>Next.js</span><span>Node.js</span><span>HTML</span><span>CSS</span></div></div>
-          <div class="skill-card"><p class="skill-card-kicker">03 / SKILL SET</p><h3>AI / ML</h3><div class="skill-pills"><span>Machine Learning</span><span>Data Analytics</span><span>Pandas</span><span>Scikit-learn</span></div></div>
-          <div class="skill-card"><p class="skill-card-kicker">04 / SKILL SET</p><h3>DATABASES</h3><div class="skill-pills"><span>PostgreSQL</span><span>Prisma</span><span>SQL</span><span>MongoDB</span></div></div>
-          <div class="skill-card"><p class="skill-card-kicker">05 / SKILL SET</p><h3>CYBER SECURITY</h3><div class="skill-pills"><span>Cybersecurity</span><span>Web Security</span><span>Anomaly Detection</span></div></div>
-          <div class="skill-card"><p class="skill-card-kicker">06 / SKILL SET</p><h3>DEVELOPER TOOLS</h3><div class="skill-pills"><span>Git</span><span>GitHub</span><span>Vercel</span><span>Figma</span></div></div>
+            <div class="skill-card">
+              <p class="skill-card-kicker">01 / SKILL SET</p>
+              <h3>PROGRAMMING</h3>
+              <div class="skill-pills">
+                <span>Java</span><span>Python</span><span>JavaScript</span><span>TypeScript</span><span>C</span></div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-card-kicker">02 / SKILL SET</p>
+              <h3>WEB DEVELOPMENT</h3>
+              <div class="skill-pills">
+                <span>React</span><span>Next.js</span><span>Node.js</span><span>HTML</span><span>CSS</span></div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-card-kicker">03 / SKILL SET</p>
+              <h3>AI / ML</h3>
+              <div class="skill-pills"><span>Machine Learning</span><span>Data
+                  Analytics</span><span>Pandas</span><span>Scikit-learn</span></div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-card-kicker">04 / SKILL SET</p>
+              <h3>DATABASES</h3>
+              <div class="skill-pills"><span>PostgreSQL</span><span>Prisma</span><span>SQL</span><span>MongoDB</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-card-kicker">05 / SKILL SET</p>
+              <h3>CYBER SECURITY</h3>
+              <div class="skill-pills"><span>Cybersecurity</span><span>Web Security</span><span>Anomaly Detection</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-card-kicker">06 / SKILL SET</p>
+              <h3>DEVELOPER TOOLS</h3>
+              <div class="skill-pills"><span>Git</span><span>GitHub</span><span>Vercel</span><span>Figma</span></div>
+            </div>
           </div>
           <aside class="focus-panel">
             <p class="section-kicker">Current focus</p>
@@ -4133,8 +4703,42 @@
           <p>Technical work, coordination and community leadership.</p>
         </div>
         <div class="experience-grid" id="experience-grid">
-        <article class="experience-card"><div><div class="experience-top"><div><p class="experience-role">Technical Head</p><h3 class="experience-org">Force Vega Racing</h3></div><div class="experience-meta"><span class="experience-period">SEP 2026 — PRESENT</span><span class="experience-location">VIJAYAWADA, INDIA</span></div></div><ul class="experience-list"><li>Managing the club&#039;s website and digital platforms</li><li>Developing and maintaining the online registration system</li><li>Handling technical requirements</li><li>Supporting digital operations</li><li>Collaborating with the team to improve online presence and student experience</li></ul></div></article>
-        <article class="experience-card"><div><div class="experience-top"><div><p class="experience-role">Team Leader</p><h3 class="experience-org">JCI Vijayawada Impact</h3></div><div class="experience-meta"><span class="experience-period">SEP 2025 — PRESENT</span><span class="experience-location">ECONOMIC EMPOWERMENT</span></div></div><ul class="experience-list"><li>Leading community empowerment initiatives and workshops.</li><li>Coordinating teams for event management and execution.</li><li>Fostering leadership and personal development among youth.</li></ul></div></article>
+          <article class="experience-card">
+            <div>
+              <div class="experience-top">
+                <div>
+                  <p class="experience-role">Technical Head</p>
+                  <h3 class="experience-org">Force Vega Racing</h3>
+                </div>
+                <div class="experience-meta"><span class="experience-period">SEP 2026 — PRESENT</span><span
+                    class="experience-location">VIJAYAWADA, INDIA</span></div>
+              </div>
+              <ul class="experience-list">
+                <li>Managing the club&#039;s website and digital platforms</li>
+                <li>Developing and maintaining the online registration system</li>
+                <li>Handling technical requirements</li>
+                <li>Supporting digital operations</li>
+                <li>Collaborating with the team to improve online presence and student experience</li>
+              </ul>
+            </div>
+          </article>
+          <article class="experience-card">
+            <div>
+              <div class="experience-top">
+                <div>
+                  <p class="experience-role">Team Leader</p>
+                  <h3 class="experience-org">JCI Vijayawada Impact</h3>
+                </div>
+                <div class="experience-meta"><span class="experience-period">SEP 2025 — PRESENT</span><span
+                    class="experience-location">ECONOMIC EMPOWERMENT</span></div>
+              </div>
+              <ul class="experience-list">
+                <li>Leading community empowerment initiatives and workshops.</li>
+                <li>Coordinating teams for event management and execution.</li>
+                <li>Fostering leadership and personal development among youth.</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -4159,19 +4763,215 @@
         </div>
 
         <div class="project-grid" id="project-grid">
-        <article class="project-card" data-category="SECURITY"><div class="project-body"><div class="project-meta-line"><span class="project-category">SECURITY</span><span class="project-status" data-status="PUBLISHED DEMO">PUBLISHED DEMO</span></div><h3>PassCheck</h3><p class="project-desc">Privacy-focused password analysis, breach checks and secure password/passphrase generation.</p><p class="project-status-note">Website deployment is linked in the repository. Public availability and all workflows have not been independently checked.</p><div class="project-tech-tags"><span>Next.js</span><span>TypeScript</span><span>Web Crypto</span><span>HIBP API</span></div><div class="project-actions"><button type="button" data-open-project="passcheck">Details ↗</button><a href="https://github.com/void-tech-shiv/PassCheck" target="_blank" rel="noopener noreferrer">Source code ↗</a><a href="https://passcheck.shivanshu.in/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></div></article>
-        <article class="project-card" data-category="SOFTWARE"><div class="project-body"><div class="project-meta-line"><span class="project-category">SOFTWARE</span><span class="project-status" data-status="PUBLISHED DEMO">PUBLISHED DEMO</span></div><h3>PDFKit</h3><p class="project-desc">Document utility suite for compression, conversion, page operations, annotations and PDF management.</p><p class="project-status-note">A demo URL is linked. Some document tools use a backend; full production functionality has not been verified.</p><div class="project-tech-tags"><span>React</span><span>TypeScript</span><span>Fastify</span><span>pdf-lib</span></div><div class="project-actions"><button type="button" data-open-project="pdfkit">Details ↗</button><a href="https://github.com/void-tech-shiv/PDFKit" target="_blank" rel="noopener noreferrer">Source code ↗</a><a href="https://pdfkit.shivanshu.in/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></div></article>
-        <article class="project-card" data-category="SECURITY"><div class="project-body"><div class="project-meta-line"><span class="project-category">SECURITY</span><span class="project-status" data-status="IN DEVELOPMENT">IN DEVELOPMENT</span></div><h3>AI-SOC Platform</h3><p class="project-desc">Security operations platform with rule-based detections, alert management and incident correlation.</p><p class="project-status-note">Core ingestion, detection and correlation phases are documented as complete. AI investigator and advanced dashboard remain planned.</p><div class="project-tech-tags"><span>Next.js</span><span>FastAPI</span><span>Python</span><span>Neon PostgreSQL</span></div><div class="project-actions"><button type="button" data-open-project="ai-soc">Details ↗</button><a href="https://github.com/void-tech-shiv/AI-SOC" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
-        <article class="project-card" data-category="SOFTWARE"><div class="project-body"><div class="project-meta-line"><span class="project-category">SOFTWARE</span><span class="project-status" data-status="PROTOTYPE">PROTOTYPE</span></div><h3>GLACIA</h3><p class="project-desc">Alternative Telegram client experiment built in Kotlin for Android using TDLib.</p><p class="project-status-note">Personal exploration of Android development and Telegram internals. Full protocol parity is not claimed.</p><div class="project-tech-tags"><span>Kotlin</span><span>Android</span><span>TDLib</span><span>Jetpack Compose</span></div><div class="project-actions"><button type="button" data-open-project="glacia">Details ↗</button><a href="https://github.com/void-tech-shiv/GLACIA" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
-        <article class="project-card" data-category="AI / ML"><div class="project-body"><div class="project-meta-line"><span class="project-category">AI / ML</span><span class="project-status" data-status="PROTOTYPE">PROTOTYPE</span></div><h3>DocVerify AI</h3><p class="project-desc">Identity-document screening prototype combining OCR, MRZ parsing, tamper analysis and risk scoring.</p><p class="project-status-note">Research/demo prototype with simulated registry checks; not an official identity-verification product.</p><div class="project-tech-tags"><span>Python</span><span>FastAPI</span><span>React</span><span>OpenCV</span></div><div class="project-actions"><button type="button" data-open-project="docverify">Details ↗</button><a href="https://github.com/void-tech-shiv/Docverify-AI" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
-        <article class="project-card" data-category="WEB"><div class="project-body"><div class="project-meta-line"><span class="project-category">WEB</span><span class="project-status" data-status="PROTOTYPE">PROTOTYPE</span></div><h3>SkillTrack</h3><p class="project-desc">Multi-role training and employment analytics application with reporting and dropout-risk modeling.</p><p class="project-status-note">A demonstration deployment is linked; government adoption or production usage is not claimed.</p><div class="project-tech-tags"><span>React</span><span>Express</span><span>Prisma</span><span>PostgreSQL</span></div><div class="project-actions"><button type="button" data-open-project="skilltrack">Details ↗</button><a href="https://github.com/void-tech-shiv/Skilltrack" target="_blank" rel="noopener noreferrer">Source code ↗</a><a href="https://skilltrack.live/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div></div></article>
-        <article class="project-card" data-category="AI / ML"><div class="project-body"><div class="project-meta-line"><span class="project-category">AI / ML</span><span class="project-status" data-status="IN DEVELOPMENT">IN DEVELOPMENT</span></div><h3>AI Slang Translator</h3><p class="project-desc">Indian slang and tone-aware translator with multilingual chat, voice tools and a mobile client.</p><p class="project-status-note">Web, API and mobile source are present; deployment, mobile QA and production security work remain.</p><div class="project-tech-tags"><span>Next.js</span><span>FastAPI</span><span>WebSockets</span><span>React Native</span></div><div class="project-actions"><button type="button" data-open-project="ai-slang">Details ↗</button><a href="https://github.com/void-tech-shiv/AI-slang-translator" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
-        <article class="project-card" data-category="WEB"><div class="project-body"><div class="project-meta-line"><span class="project-category">WEB</span><span class="project-status" data-status="PROTOTYPE">PROTOTYPE</span></div><h3>KLU BZA Attendance Companion</h3><p class="project-desc">Unofficial KL University attendance companion built for Flutter web and Android.</p><p class="project-status-note">Integration preview only. Authenticated ERP login and attendance flows still need student-owner verification; demo records are fictional.</p><div class="project-tech-tags"><span>Flutter</span><span>Dart</span><span>FastAPI</span><span>Python</span></div><div class="project-actions"><button type="button" data-open-project="klu-bza">Details ↗</button><a href="https://github.com/void-tech-shiv/KLU-BZA-ERP-Portal" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
-        <article class="project-card" data-category="WEB"><div class="project-body"><div class="project-meta-line"><span class="project-category">WEB</span><span class="project-status" data-status="IN DEVELOPMENT">IN DEVELOPMENT</span></div><h3>LeetCode Companion SaaS</h3><p class="project-desc">Multi-user coding companion prototype with memberships, billing, Telegram tools and an extension.</p><p class="project-status-note">Repository contains payment and companion flows; end-to-end live billing, admin access and retreat are not verified.</p><div class="project-tech-tags"><span>Next.js</span><span>Node.js</span><span>Prisma</span><span>Razorpay</span></div><div class="project-actions"><button type="button" data-open-project="leetcode-bot">Details ↗</button><a href="https://github.com/void-tech-shiv/Leetcode-Agent-Bot" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
-        <article class="project-card" data-category="SOFTWARE"><div class="project-body"><div class="project-meta-line"><span class="project-category">SOFTWARE</span><span class="project-status" data-status="COMPLETED">COMPLETED</span></div><h3>ShellForge</h3><p class="project-desc">A Unix-style command shell in C with pipelines, redirection and job controls.</p><p class="project-status-note">Core command-line implementation and Ubuntu build instructions are documented; no independently verified release binary.</p><div class="project-tech-tags"><span>C</span><span>GNU Readline</span><span>POSIX</span><span>Make</span></div><div class="project-actions"><button type="button" data-open-project="shellforge">Details ↗</button><a href="https://github.com/void-tech-shiv/-shellforge-" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
-        <article class="project-card" data-category="SOFTWARE"><div class="project-body"><div class="project-meta-line"><span class="project-category">SOFTWARE</span><span class="project-status" data-status="COMPLETED">COMPLETED</span></div><h3>SportsPulse</h3><p class="project-desc">Java sports analytics CLI demonstrating real data-structures and algorithm use cases.</p><p class="project-status-note">Documented CLI implementation with build/run instructions; hosted web version and complete test coverage are not verified.</p><div class="project-tech-tags"><span>Java</span><span>DSA</span><span>CLI</span><span>File I/O</span></div><div class="project-actions"><button type="button" data-open-project="sportspulse">Details ↗</button><a href="https://github.com/void-tech-shiv/SPORTSPULSE" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
-        <article class="project-card" data-category="WEB"><div class="project-body"><div class="project-meta-line"><span class="project-category">WEB</span><span class="project-status" data-status="IN DEVELOPMENT">IN DEVELOPMENT</span></div><h3>Shiv Tools Marketplace</h3><p class="project-desc">Digital product marketplace for software tools with user accounts, payments and license management.</p><p class="project-status-note">Payment, admin and license workflows are in the repository; live checkout and production readiness are not confirmed.</p><div class="project-tech-tags"><span>Next.js</span><span>PostgreSQL</span><span>Neon</span><span>Razorpay</span></div><div class="project-actions"><button type="button" data-open-project="tools-store">Details ↗</button><a href="https://github.com/void-tech-shiv/shiv-tools-store" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
-        <article class="project-card" data-category="SECURITY"><div class="project-body"><div class="project-meta-line"><span class="project-category">SECURITY</span><span class="project-status" data-status="PROTOTYPE">PROTOTYPE</span></div><h3>CyberShield</h3><p class="project-desc">Security assessment dashboard that orchestrates OWASP ZAP scans on authorized targets.</p><p class="project-status-note">Local assessment and lab workflow is documented; no public hosted scanner or independent deployment verification.</p><div class="project-tech-tags"><span>React</span><span>FastAPI</span><span>OWASP ZAP</span><span>PostgreSQL</span></div><div class="project-actions"><button type="button" data-open-project="cybershield">Details ↗</button><a href="https://github.com/void-tech-shiv/CyberShield" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></div></article>
+          <article class="project-card" data-category="SECURITY">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">SECURITY</span><span class="project-status"
+                  data-status="PUBLISHED DEMO">PUBLISHED DEMO</span></div>
+              <h3>PassCheck</h3>
+              <p class="project-desc">Privacy-focused password analysis, breach checks and secure password/passphrase
+                generation.</p>
+              <p class="project-status-note">Website deployment is linked in the repository. Public availability and all
+                workflows have not been independently checked.</p>
+              <div class="project-tech-tags"><span>Next.js</span><span>TypeScript</span><span>Web
+                  Crypto</span><span>HIBP API</span></div>
+              <div class="project-actions"><button type="button" data-open-project="passcheck">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/PassCheck" target="_blank" rel="noopener noreferrer">Source
+                  code ↗</a><a href="https://passcheck.shivanshu.in/" target="_blank" rel="noopener noreferrer">Demo
+                  ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="SOFTWARE">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">SOFTWARE</span><span class="project-status"
+                  data-status="PUBLISHED DEMO">PUBLISHED DEMO</span></div>
+              <h3>PDFKit</h3>
+              <p class="project-desc">Document utility suite for compression, conversion, page operations, annotations
+                and PDF management.</p>
+              <p class="project-status-note">A demo URL is linked. Some document tools use a backend; full production
+                functionality has not been verified.</p>
+              <div class="project-tech-tags">
+                <span>React</span><span>TypeScript</span><span>Fastify</span><span>pdf-lib</span></div>
+              <div class="project-actions"><button type="button" data-open-project="pdfkit">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/PDFKit" target="_blank" rel="noopener noreferrer">Source code
+                  ↗</a><a href="https://pdfkit.shivanshu.in/" target="_blank" rel="noopener noreferrer">Demo ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="SECURITY">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">SECURITY</span><span class="project-status"
+                  data-status="IN DEVELOPMENT">IN DEVELOPMENT</span></div>
+              <h3>AI-SOC Platform</h3>
+              <p class="project-desc">Security operations platform with rule-based detections, alert management and
+                incident correlation.</p>
+              <p class="project-status-note">Core ingestion, detection and correlation phases are documented as
+                complete. AI investigator and advanced dashboard remain planned.</p>
+              <div class="project-tech-tags"><span>Next.js</span><span>FastAPI</span><span>Python</span><span>Neon
+                  PostgreSQL</span></div>
+              <div class="project-actions"><button type="button" data-open-project="ai-soc">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/AI-SOC" target="_blank" rel="noopener noreferrer">Source code
+                  ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="SOFTWARE">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">SOFTWARE</span><span class="project-status"
+                  data-status="PROTOTYPE">PROTOTYPE</span></div>
+              <h3>GLACIA</h3>
+              <p class="project-desc">Alternative Telegram client experiment built in Kotlin for Android using TDLib.
+              </p>
+              <p class="project-status-note">Personal exploration of Android development and Telegram internals. Full
+                protocol parity is not claimed.</p>
+              <div class="project-tech-tags"><span>Kotlin</span><span>Android</span><span>TDLib</span><span>Jetpack
+                  Compose</span></div>
+              <div class="project-actions"><button type="button" data-open-project="glacia">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/GLACIA" target="_blank" rel="noopener noreferrer">Source code
+                  ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="AI / ML">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">AI / ML</span><span class="project-status"
+                  data-status="PROTOTYPE">PROTOTYPE</span></div>
+              <h3>DocVerify AI</h3>
+              <p class="project-desc">Identity-document screening prototype combining OCR, MRZ parsing, tamper analysis
+                and risk scoring.</p>
+              <p class="project-status-note">Research/demo prototype with simulated registry checks; not an official
+                identity-verification product.</p>
+              <div class="project-tech-tags">
+                <span>Python</span><span>FastAPI</span><span>React</span><span>OpenCV</span></div>
+              <div class="project-actions"><button type="button" data-open-project="docverify">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/Docverify-AI" target="_blank" rel="noopener noreferrer">Source
+                  code ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="WEB">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">WEB</span><span class="project-status"
+                  data-status="PROTOTYPE">PROTOTYPE</span></div>
+              <h3>SkillTrack</h3>
+              <p class="project-desc">Multi-role training and employment analytics application with reporting and
+                dropout-risk modeling.</p>
+              <p class="project-status-note">A demonstration deployment is linked; government adoption or production
+                usage is not claimed.</p>
+              <div class="project-tech-tags">
+                <span>React</span><span>Express</span><span>Prisma</span><span>PostgreSQL</span></div>
+              <div class="project-actions"><button type="button" data-open-project="skilltrack">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/Skilltrack" target="_blank" rel="noopener noreferrer">Source
+                  code ↗</a><a href="https://skilltrack.live/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-category="AI / ML">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">AI / ML</span><span class="project-status"
+                  data-status="IN DEVELOPMENT">IN DEVELOPMENT</span></div>
+              <h3>AI Slang Translator</h3>
+              <p class="project-desc">Indian slang and tone-aware translator with multilingual chat, voice tools and a
+                mobile client.</p>
+              <p class="project-status-note">Web, API and mobile source are present; deployment, mobile QA and
+                production security work remain.</p>
+              <div class="project-tech-tags"><span>Next.js</span><span>FastAPI</span><span>WebSockets</span><span>React
+                  Native</span></div>
+              <div class="project-actions"><button type="button" data-open-project="ai-slang">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/AI-slang-translator" target="_blank"
+                  rel="noopener noreferrer">Source code ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="WEB">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">WEB</span><span class="project-status"
+                  data-status="PROTOTYPE">PROTOTYPE</span></div>
+              <h3>KLU BZA Attendance Companion</h3>
+              <p class="project-desc">Unofficial KL University attendance companion built for Flutter web and Android.
+              </p>
+              <p class="project-status-note">Integration preview only. Authenticated ERP login and attendance flows
+                still need student-owner verification; demo records are fictional.</p>
+              <div class="project-tech-tags">
+                <span>Flutter</span><span>Dart</span><span>FastAPI</span><span>Python</span></div>
+              <div class="project-actions"><button type="button" data-open-project="klu-bza">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/KLU-BZA-ERP-Portal" target="_blank"
+                  rel="noopener noreferrer">Source code ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="WEB">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">WEB</span><span class="project-status"
+                  data-status="IN DEVELOPMENT">IN DEVELOPMENT</span></div>
+              <h3>LeetCode Companion SaaS</h3>
+              <p class="project-desc">Multi-user coding companion prototype with memberships, billing, Telegram tools
+                and an extension.</p>
+              <p class="project-status-note">Repository contains payment and companion flows; end-to-end live billing,
+                admin access and retreat are not verified.</p>
+              <div class="project-tech-tags">
+                <span>Next.js</span><span>Node.js</span><span>Prisma</span><span>Razorpay</span></div>
+              <div class="project-actions"><button type="button" data-open-project="leetcode-bot">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/Leetcode-Agent-Bot" target="_blank"
+                  rel="noopener noreferrer">Source code ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="SOFTWARE">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">SOFTWARE</span><span class="project-status"
+                  data-status="COMPLETED">COMPLETED</span></div>
+              <h3>ShellForge</h3>
+              <p class="project-desc">A Unix-style command shell in C with pipelines, redirection and job controls.</p>
+              <p class="project-status-note">Core command-line implementation and Ubuntu build instructions are
+                documented; no independently verified release binary.</p>
+              <div class="project-tech-tags"><span>C</span><span>GNU Readline</span><span>POSIX</span><span>Make</span>
+              </div>
+              <div class="project-actions"><button type="button" data-open-project="shellforge">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/-shellforge-" target="_blank" rel="noopener noreferrer">Source
+                  code ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="SOFTWARE">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">SOFTWARE</span><span class="project-status"
+                  data-status="COMPLETED">COMPLETED</span></div>
+              <h3>SportsPulse</h3>
+              <p class="project-desc">Java sports analytics CLI demonstrating real data-structures and algorithm use
+                cases.</p>
+              <p class="project-status-note">Documented CLI implementation with build/run instructions; hosted web
+                version and complete test coverage are not verified.</p>
+              <div class="project-tech-tags"><span>Java</span><span>DSA</span><span>CLI</span><span>File I/O</span>
+              </div>
+              <div class="project-actions"><button type="button" data-open-project="sportspulse">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/SPORTSPULSE" target="_blank" rel="noopener noreferrer">Source
+                  code ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="WEB">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">WEB</span><span class="project-status"
+                  data-status="IN DEVELOPMENT">IN DEVELOPMENT</span></div>
+              <h3>Shiv Tools Marketplace</h3>
+              <p class="project-desc">Digital product marketplace for software tools with user accounts, payments and
+                license management.</p>
+              <p class="project-status-note">Payment, admin and license workflows are in the repository; live checkout
+                and production readiness are not confirmed.</p>
+              <div class="project-tech-tags">
+                <span>Next.js</span><span>PostgreSQL</span><span>Neon</span><span>Razorpay</span></div>
+              <div class="project-actions"><button type="button" data-open-project="tools-store">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/shiv-tools-store" target="_blank"
+                  rel="noopener noreferrer">Source code ↗</a></div>
+            </div>
+          </article>
+          <article class="project-card" data-category="SECURITY">
+            <div class="project-body">
+              <div class="project-meta-line"><span class="project-category">SECURITY</span><span class="project-status"
+                  data-status="PROTOTYPE">PROTOTYPE</span></div>
+              <h3>CyberShield</h3>
+              <p class="project-desc">Security assessment dashboard that orchestrates OWASP ZAP scans on authorized
+                targets.</p>
+              <p class="project-status-note">Local assessment and lab workflow is documented; no public hosted scanner
+                or independent deployment verification.</p>
+              <div class="project-tech-tags"><span>React</span><span>FastAPI</span><span>OWASP
+                  ZAP</span><span>PostgreSQL</span></div>
+              <div class="project-actions"><button type="button" data-open-project="cybershield">Details ↗</button><a
+                  href="https://github.com/void-tech-shiv/CyberShield" target="_blank" rel="noopener noreferrer">Source
+                  code ↗</a></div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -4186,14 +4986,90 @@
           <p>Course credentials and certificate previews from the portfolio repository.</p>
         </div>
         <div class="cert-grid" id="cert-grid">
-        <article class="cert-card"><div class="cert-media"><img src="assets/certificates/front-end.jpg" alt="Front End Development Libraries certificate preview" width="800" height="540" loading="lazy" decoding="async"></div><div class="cert-info"><h3>Front End Development Libraries</h3><p>freeCodeCamp · 2025</p><a class="cert-link" href="https://www.freecodecamp.org/certification/shivanshu_satyajeet/front-end-development-libraries" target="_blank" rel="noopener noreferrer">Verify credential ↗</a></div></article>
-        <article class="cert-card"><div class="cert-media"><img src="assets/certificates/js-algo.jpg" alt="JavaScript Algorithms and Data Structures certificate preview" width="800" height="540" loading="lazy" decoding="async"></div><div class="cert-info"><h3>JavaScript Algorithms and Data Structures</h3><p>freeCodeCamp · 2025</p><a class="cert-link" href="https://www.freecodecamp.org/certification/shivanshu_satyajeet/javascript-algorithms-and-data-structures" target="_blank" rel="noopener noreferrer">Verify credential ↗</a></div></article>
-        <article class="cert-card"><div class="cert-media"><img src="assets/certificates/rwd.jpg" alt="Responsive Web Design certificate preview" width="800" height="540" loading="lazy" decoding="async"></div><div class="cert-info"><h3>Responsive Web Design</h3><p>freeCodeCamp · 2025</p><a class="cert-link" href="https://www.freecodecamp.org/certification/shivanshu_satyajeet/responsive-web-design" target="_blank" rel="noopener noreferrer">Verify credential ↗</a></div></article>
-        <article class="cert-card"><div class="cert-media"><img src="assets/certificates/hackerrank.jpg" alt="HackerRank certificate certificate preview" width="800" height="540" loading="lazy" decoding="async"></div><div class="cert-info"><h3>HackerRank certificate</h3><p>HackerRank · 2025</p><a class="cert-link" href="https://www.hackerrank.com/certificates/588c0e78b0e8" target="_blank" rel="noopener noreferrer">Verify credential ↗</a></div></article>
-        <article class="cert-card"><div class="cert-media"><img src="assets/certificates/skilljar.jpg" alt="Skilljar certificate certificate preview" width="800" height="540" loading="lazy" decoding="async"></div><div class="cert-info"><h3>Skilljar certificate</h3><p>Skilljar · 2025</p><a class="cert-link" href="https://verify.skilljar.com/c/oyko7zrkhybi" target="_blank" rel="noopener noreferrer">Verify credential ↗</a></div></article>
-        <article class="cert-card"><div class="cert-media"><img src="assets/certificates/google.jpg" alt="Google Skillshop credential certificate preview" width="800" height="540" loading="lazy" decoding="async"></div><div class="cert-info"><h3>Google Skillshop credential</h3><p>Google Skillshop · 2025</p><a class="cert-link" href="https://skillshop.credential.net/f22ab88c-ea65-4f30-9478-0dae22bac3fc" target="_blank" rel="noopener noreferrer">Verify credential ↗</a></div></article>
-        <article class="cert-card"><div class="cert-media"><img src="assets/certificates/1764156593426.jpg" alt="Ethical Hacking 101 certificate preview" width="800" height="540" loading="lazy" decoding="async"></div><div class="cert-info"><h3>Ethical Hacking 101</h3><p>Simplilearn SkillUp · 2025</p><span class="cert-link" style="color:var(--text-subtle);">Certificate preview</span></div></article>
-        <article class="cert-card"><div class="cert-media"><img src="assets/certificates/1770051085539.jpg" alt="AI Agents for Beginners certificate preview" width="800" height="540" loading="lazy" decoding="async"></div><div class="cert-info"><h3>AI Agents for Beginners</h3><p>Simplilearn SkillUp · 2025</p><span class="cert-link" style="color:var(--text-subtle);">Certificate preview</span></div></article>
+          <article class="cert-card">
+            <div class="cert-media"><img src="assets/certificates/front-end.jpg"
+                alt="Front End Development Libraries certificate preview" width="800" height="540" loading="lazy"
+                decoding="async"></div>
+            <div class="cert-info">
+              <h3>Front End Development Libraries</h3>
+              <p>freeCodeCamp · 2025</p><a class="cert-link"
+                href="https://www.freecodecamp.org/certification/shivanshu_satyajeet/front-end-development-libraries"
+                target="_blank" rel="noopener noreferrer">Verify credential ↗</a>
+            </div>
+          </article>
+          <article class="cert-card">
+            <div class="cert-media"><img src="assets/certificates/js-algo.jpg"
+                alt="JavaScript Algorithms and Data Structures certificate preview" width="800" height="540"
+                loading="lazy" decoding="async"></div>
+            <div class="cert-info">
+              <h3>JavaScript Algorithms and Data Structures</h3>
+              <p>freeCodeCamp · 2025</p><a class="cert-link"
+                href="https://www.freecodecamp.org/certification/shivanshu_satyajeet/javascript-algorithms-and-data-structures"
+                target="_blank" rel="noopener noreferrer">Verify credential ↗</a>
+            </div>
+          </article>
+          <article class="cert-card">
+            <div class="cert-media"><img src="assets/certificates/rwd.jpg"
+                alt="Responsive Web Design certificate preview" width="800" height="540" loading="lazy"
+                decoding="async"></div>
+            <div class="cert-info">
+              <h3>Responsive Web Design</h3>
+              <p>freeCodeCamp · 2025</p><a class="cert-link"
+                href="https://www.freecodecamp.org/certification/shivanshu_satyajeet/responsive-web-design"
+                target="_blank" rel="noopener noreferrer">Verify credential ↗</a>
+            </div>
+          </article>
+          <article class="cert-card">
+            <div class="cert-media"><img src="assets/certificates/hackerrank.jpg"
+                alt="HackerRank certificate certificate preview" width="800" height="540" loading="lazy"
+                decoding="async"></div>
+            <div class="cert-info">
+              <h3>HackerRank certificate</h3>
+              <p>HackerRank · 2025</p><a class="cert-link" href="https://www.hackerrank.com/certificates/588c0e78b0e8"
+                target="_blank" rel="noopener noreferrer">Verify credential ↗</a>
+            </div>
+          </article>
+          <article class="cert-card">
+            <div class="cert-media"><img src="assets/certificates/skilljar.jpg"
+                alt="Skilljar certificate certificate preview" width="800" height="540" loading="lazy" decoding="async">
+            </div>
+            <div class="cert-info">
+              <h3>Skilljar certificate</h3>
+              <p>Skilljar · 2025</p><a class="cert-link" href="https://verify.skilljar.com/c/oyko7zrkhybi"
+                target="_blank" rel="noopener noreferrer">Verify credential ↗</a>
+            </div>
+          </article>
+          <article class="cert-card">
+            <div class="cert-media"><img src="assets/certificates/google.jpg"
+                alt="Google Skillshop credential certificate preview" width="800" height="540" loading="lazy"
+                decoding="async"></div>
+            <div class="cert-info">
+              <h3>Google Skillshop credential</h3>
+              <p>Google Skillshop · 2025</p><a class="cert-link"
+                href="https://skillshop.credential.net/f22ab88c-ea65-4f30-9478-0dae22bac3fc" target="_blank"
+                rel="noopener noreferrer">Verify credential ↗</a>
+            </div>
+          </article>
+          <article class="cert-card">
+            <div class="cert-media"><img src="assets/certificates/1764156593426.jpg"
+                alt="Ethical Hacking 101 certificate preview" width="800" height="540" loading="lazy" decoding="async">
+            </div>
+            <div class="cert-info">
+              <h3>Ethical Hacking 101</h3>
+              <p>Simplilearn SkillUp · 2025</p><span class="cert-link" style="color:var(--text-subtle);">Certificate
+                preview</span>
+            </div>
+          </article>
+          <article class="cert-card">
+            <div class="cert-media"><img src="assets/certificates/1770051085539.jpg"
+                alt="AI Agents for Beginners certificate preview" width="800" height="540" loading="lazy"
+                decoding="async"></div>
+            <div class="cert-info">
+              <h3>AI Agents for Beginners</h3>
+              <p>Simplilearn SkillUp · 2025</p><span class="cert-link" style="color:var(--text-subtle);">Certificate
+                preview</span>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -5333,124 +6209,472 @@
       resize();
       handleLocationChange();
       updateScroll();
-    
-    /* ==========================================================================
-       THEME PICKER CONTROLLER
-       ========================================================================== */
-    (function initThemePicker() {
-      const THEMES = [
-        { id: 'red', name: 'Red', desc: 'Default • Studio Rim', circleBg: 'linear-gradient(135deg, #f87171 0%, #ef4444 50%, #991b1b 100%)' },
-        { id: 'white', name: 'White', desc: 'Monochrome • Platinum Glass', circleBg: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%)', isWhite: true },
-        { id: 'green', name: 'Green', desc: 'Emerald • Cyber Neon', circleBg: 'linear-gradient(135deg, #34d399 0%, #10b981 50%, #065f46 100%)' },
-        { id: 'violet', name: 'Violet', desc: 'Electric • Amethyst', circleBg: 'linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #5b21b6 100%)' },
-        { id: 'fuchsia', name: 'Fuchsia Pink', desc: 'Vibrant • Hot Magenta', circleBg: 'linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #9d174d 100%)' },
-        { id: 'navy', name: 'Navy Blue', desc: 'Cobalt • Deep Sapphire', circleBg: 'linear-gradient(135deg, #60a5fa 0%, #2563eb 50%, #1e3a8a 100%)' },
-        { id: 'rgb', name: 'RGB', desc: 'Dynamic • Spectrum Cycle', circleBg: 'conic-gradient(from 0deg, #ff0055, #ffaa00, #00ff66, #00ccff, #9900ff, #ff0055)', isRgb: true }
-      ];
 
-      const themeBtn = document.getElementById('sidebar-theme-btn');
-      const themePopover = document.getElementById('theme-swatch-popover');
-      const themeCloseBtn = document.getElementById('theme-popover-close');
-      const themeDot = document.getElementById('theme-dot-preview');
-      const themeTooltip = document.getElementById('theme-tooltip-text');
-      const swatchesList = themePopover ? themePopover.querySelector('.theme-swatches-list') : null;
+      /* ==========================================================================
+         THEME PICKER CONTROLLER
+         ========================================================================== */
+      (function initThemePicker() {
+        const THEMES = [
+          { id: 'red', name: 'Red', desc: 'Default • Studio Rim', circleBg: 'linear-gradient(135deg, #f87171 0%, #ef4444 50%, #991b1b 100%)' },
+          { id: 'white', name: 'White', desc: 'Monochrome • Platinum Glass', circleBg: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%)', isWhite: true },
+          { id: 'winter', name: 'Winter', desc: 'Glacier • Icy Frost & Snow', circleBg: 'linear-gradient(135deg, #bae6fd 0%, #38bdf8 50%, #0369a1 100%)', isWinter: true },
+          { id: 'green', name: 'Green', desc: 'Emerald • Cyber Neon', circleBg: 'linear-gradient(135deg, #34d399 0%, #10b981 50%, #065f46 100%)' },
+          { id: 'violet', name: 'Violet', desc: 'Electric • Amethyst', circleBg: 'linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #5b21b6 100%)' },
+          { id: 'fuchsia', name: 'Fuchsia Pink', desc: 'Vibrant • Hot Magenta', circleBg: 'linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #9d174d 100%)' },
+          { id: 'navy', name: 'Navy Blue', desc: 'Cobalt • Deep Sapphire', circleBg: 'linear-gradient(135deg, #60a5fa 0%, #2563eb 50%, #1e3a8a 100%)' },
+          { id: 'rgb', name: 'RGB', desc: 'Dynamic • Spectrum Cycle', circleBg: 'conic-gradient(from 0deg, #ff0055, #ffaa00, #00ff66, #00ccff, #9900ff, #ff0055)', isRgb: true }
+        ];
 
-      if (!themeBtn || !themePopover || !swatchesList) return;
+        const themeBtn = document.getElementById('sidebar-theme-btn');
+        const themePopover = document.getElementById('theme-swatch-popover');
+        const themeCloseBtn = document.getElementById('theme-popover-close');
+        const themeDot = document.getElementById('theme-dot-preview');
+        const themeTooltip = document.getElementById('theme-tooltip-text');
+        const swatchesList = themePopover ? themePopover.querySelector('.theme-swatches-list') : null;
 
-      let currentTheme = localStorage.getItem('portfolio-accent-theme') || 'red';
-      let rgbAnimationId = null;
-      let dynHue = 0;
-      let lastRgbTime = 0;
+        if (!themeBtn || !themePopover || !swatchesList) return;
 
-      function hslToRgb(h, s, l) {
-        s /= 100;
-        l /= 100;
-        const k = n => (n + h / 30) % 12;
-        const a = s * Math.min(l, 1 - l);
-        const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-        return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
-      }
+        let currentTheme = localStorage.getItem('portfolio-accent-theme') || 'red';
+        let rgbAnimationId = null;
+        let dynHue = 0;
+        let lastRgbTime = 0;
 
-      function startRgbLoop() {
-        if (rgbAnimationId) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          document.documentElement.style.setProperty('--dyn-hue', '340');
-          const r = hslToRgb(340, 90, 60);
-          document.documentElement.style.setProperty('--accent-rgb', r.join(', '));
-          return;
-        }
-        function step(timestamp) {
-          if (!lastRgbTime) lastRgbTime = timestamp;
-          const delta = timestamp - lastRgbTime;
-          lastRgbTime = timestamp;
-          dynHue = (dynHue + (delta * 0.02)) % 360;
-          const mainRgb = hslToRgb(dynHue, 90, 60);
-          const deepRgb = hslToRgb(dynHue, 90, 50);
-          const lightRgb = hslToRgb(dynHue, 95, 70);
-          const darkRgb = hslToRgb(dynHue, 85, 35);
+        /* ==========================================================================
+           WINTER THEME SNOW & CURSOR TRAIL ENGINE (MULTI-DEPTH & LIGHTWEIGHT)
+           ========================================================================== */
+        const snowCanvas = document.getElementById('winter-snow-canvas');
+        const snowCtx = snowCanvas ? snowCanvas.getContext('2d') : null;
+        const cursorCanvas = document.getElementById('winter-cursor-canvas');
+        const cursorCtx = cursorCanvas ? cursorCanvas.getContext('2d') : null;
+        let snowAnimId = null;
+        let snowflakes = [];
+        let cursorParticles = [];
+        const MAX_CURSOR_PARTICLES = 45;
+        let lastPointerX = -999;
+        let lastPointerY = -999;
+        let lastEmitTime = 0;
+        let isSnowEnabled = localStorage.getItem('portfolio-snow-enabled') !== 'false';
+        const snowToggleBtn = document.getElementById('theme-snow-toggle-btn');
 
-          document.documentElement.style.setProperty('--dyn-hue', Math.round(dynHue).toString());
-          document.documentElement.style.setProperty('--accent-rgb', mainRgb.join(', '));
-          document.documentElement.style.setProperty('--accent-deep-rgb', deepRgb.join(', '));
-          document.documentElement.style.setProperty('--accent-light-rgb', lightRgb.join(', '));
-          document.documentElement.style.setProperty('--accent-dark-rgb', darkRgb.join(', '));
-
-          rgbAnimationId = requestAnimationFrame(step);
-        }
-        rgbAnimationId = requestAnimationFrame(step);
-      }
-
-      function stopRgbLoop() {
-        if (rgbAnimationId) {
-          cancelAnimationFrame(rgbAnimationId);
-          rgbAnimationId = null;
-        }
-        document.documentElement.style.removeProperty('--dyn-hue');
-        document.documentElement.style.removeProperty('--accent-rgb');
-        document.documentElement.style.removeProperty('--accent-deep-rgb');
-        document.documentElement.style.removeProperty('--accent-light-rgb');
-        document.documentElement.style.removeProperty('--accent-dark-rgb');
-        lastRgbTime = 0;
-      }
-
-      function applyTheme(themeId) {
-        currentTheme = themeId;
-        document.documentElement.setAttribute('data-theme', themeId);
-        try {
-          localStorage.setItem('portfolio-accent-theme', themeId);
-        } catch(e) {}
-
-        if (themeId === 'rgb') {
-          startRgbLoop();
-        } else {
-          stopRgbLoop();
-        }
-
-        // Update swatches selection
-        const items = swatchesList.querySelectorAll('.theme-swatch-item');
-        items.forEach(item => {
-          const isSelected = item.getAttribute('data-theme-id') === themeId;
-          item.setAttribute('aria-checked', isSelected ? 'true' : 'false');
-        });
-
-        // Update sidebar tooltip & preview dot
-        const themeObj = THEMES.find(t => t.id === themeId) || THEMES[0];
-        if (themeTooltip) themeTooltip.textContent = 'Theme: ' + themeObj.name;
-        if (themeDot) {
-          if (themeObj.isRgb) {
-            themeDot.style.background = 'conic-gradient(#ff0055, #ffaa00, #00ff66, #00ccff, #9900ff, #ff0055)';
+        function updateSnowToggleUI() {
+          if (!snowToggleBtn) return;
+          snowToggleBtn.setAttribute('aria-checked', isSnowEnabled ? 'true' : 'false');
+          if (!isSnowEnabled) {
+            document.documentElement.setAttribute('data-snow', 'false');
           } else {
-            themeDot.style.background = '';
+            document.documentElement.removeAttribute('data-snow');
           }
         }
-      }
 
-      // Populate swatches list
-      swatchesList.innerHTML = THEMES.map(t => `
+        function createSnowflake(w, h, randomY) {
+          const rand = Math.random();
+          let layer = 0;
+          let radius, speedY, swayAmp, swaySpeed, alpha, color;
+
+          if (rand < 0.62) {
+            // Layer 0: Distant, small, gentle background drift
+            layer = 0;
+            radius = Math.random() * 0.7 + 0.8;
+            speedY = Math.random() * 0.55 + 0.35;
+            swayAmp = Math.random() * 0.65 + 0.35;
+            swaySpeed = Math.random() * 0.014 + 0.008;
+            alpha = Math.random() * 0.28 + 0.32;
+            color = 'rgba(186, 230, 253, ';
+          } else if (rand < 0.89) {
+            // Layer 1: Mid-depth, crisp presence, moderate size
+            layer = 1;
+            radius = Math.random() * 1.1 + 1.6;
+            speedY = Math.random() * 0.85 + 0.95;
+            swayAmp = Math.random() * 1.3 + 0.8;
+            swaySpeed = Math.random() * 0.018 + 0.012;
+            alpha = Math.random() * 0.25 + 0.60;
+            color = 'rgba(224, 242, 254, ';
+          } else {
+            // Layer 2: Foreground, soft fluffy flakes, larger & faster with soft halo
+            layer = 2;
+            radius = Math.random() * 1.8 + 2.8;
+            speedY = Math.random() * 1.2 + 1.8;
+            swayAmp = Math.random() * 2.0 + 1.5;
+            swaySpeed = Math.random() * 0.022 + 0.015;
+            alpha = Math.random() * 0.22 + 0.76;
+            color = 'rgba(240, 249, 255, ';
+          }
+
+          return {
+            layer: layer,
+            x: Math.random() * w,
+            y: randomY ? Math.random() * h : -(radius + 14),
+            radius: radius,
+            speedY: speedY,
+            swayAmp: swayAmp,
+            swaySpeed: swaySpeed,
+            angle: Math.random() * Math.PI * 2,
+            alpha: alpha,
+            color: color
+          };
+        }
+
+        function initSnowflakes() {
+          if (!snowCanvas) return;
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          const count = w < 768 ? 140 : 280;
+          snowflakes = [];
+          for (let i = 0; i < count; i++) {
+            snowflakes.push(createSnowflake(w, h, true));
+          }
+        }
+
+        function emitCursorSnow(x, y, count) {
+          if (cursorParticles.length >= MAX_CURSOR_PARTICLES) return;
+          const numToEmit = Math.min(count || 1, MAX_CURSOR_PARTICLES - cursorParticles.length);
+          for (let i = 0; i < numToEmit; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 0.8 + 0.2;
+            cursorParticles.push({
+              x: x + (Math.random() - 0.5) * 8,
+              y: y + (Math.random() - 0.5) * 8,
+              vx: Math.cos(angle) * speed * 0.75,
+              vy: Math.sin(angle) * speed * 0.4 + 0.35,
+              radius: Math.random() * 1.5 + 0.9,
+              alpha: Math.random() * 0.25 + 0.72,
+              life: 1.0,
+              decay: Math.random() * 0.02 + 0.015,
+              twinkle: Math.random() * Math.PI * 2,
+              twinkleSpeed: Math.random() * 0.14 + 0.08,
+              isSparkle: Math.random() < 0.45
+            });
+          }
+        }
+
+        function emitSnowPuff(x, y) {
+          if (cursorParticles.length >= MAX_CURSOR_PARTICLES) return;
+          const count = Math.min(5, MAX_CURSOR_PARTICLES - cursorParticles.length);
+          for (let i = 0; i < count; i++) {
+            const angle = (i / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
+            const speed = Math.random() * 0.9 + 0.4;
+            cursorParticles.push({
+              x: x + Math.cos(angle) * 4,
+              y: y + Math.sin(angle) * 4,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed - 0.2,
+              radius: Math.random() * 1.4 + 0.8,
+              alpha: 0.85,
+              life: 1.0,
+              decay: 0.032,
+              twinkle: Math.random() * Math.PI * 2,
+              twinkleSpeed: 0.16,
+              isSparkle: true
+            });
+          }
+        }
+
+        function onPointerMove(e) {
+          if (currentTheme !== 'winter' || !isSnowEnabled) return;
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          if (e.pointerType === 'touch') return;
+
+          const now = performance.now();
+          const dx = e.clientX - lastPointerX;
+          const dy = e.clientY - lastPointerY;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist >= 12 || (dist >= 5 && now - lastEmitTime >= 35)) {
+            emitCursorSnow(e.clientX, e.clientY, dist > 28 ? 2 : 1);
+            lastPointerX = e.clientX;
+            lastPointerY = e.clientY;
+            lastEmitTime = now;
+          }
+        }
+
+        function onPointerDown(e) {
+          if (currentTheme !== 'winter' || !isSnowEnabled) return;
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          if (e.pointerType === 'touch') {
+            emitSnowPuff(e.clientX, e.clientY);
+          }
+        }
+
+        window.addEventListener('pointermove', onPointerMove, { passive: true });
+        window.addEventListener('pointerdown', onPointerDown, { passive: true });
+        window.addEventListener('pointerleave', () => {
+          lastPointerX = -999;
+          lastPointerY = -999;
+        }, { passive: true });
+
+        function resizeSnowCanvas() {
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+
+          if (snowCanvas && snowCtx) {
+            snowCanvas.width = w * dpr;
+            snowCanvas.height = h * dpr;
+            snowCtx.scale(dpr, dpr);
+          }
+          if (cursorCanvas && cursorCtx) {
+            cursorCanvas.width = w * dpr;
+            cursorCanvas.height = h * dpr;
+            cursorCtx.scale(dpr, dpr);
+          }
+        }
+
+        function renderSnow() {
+          if (!snowCtx || !snowCanvas) return;
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+
+          // Clear falling snow canvas
+          snowCtx.clearRect(0, 0, w, h);
+
+          // Clear cursor snow canvas
+          if (cursorCtx && cursorCanvas) {
+            cursorCtx.clearRect(0, 0, w, h);
+          }
+
+          const time = performance.now() * 0.001;
+          const breeze = Math.sin(time * 0.3) * 0.5;
+
+          // 1. Draw Layer 0 & Layer 1 flakes on background snow canvas
+          for (let i = 0; i < snowflakes.length; i++) {
+            const flake = snowflakes[i];
+            if (flake.layer === 2) continue;
+
+            flake.y += flake.speedY;
+            flake.angle += flake.swaySpeed;
+            flake.x += Math.sin(flake.angle) * flake.swayAmp + breeze;
+
+            if (flake.y > h + flake.radius + 10) {
+              flake.y = -(flake.radius + 10);
+              flake.x = Math.random() * w;
+            }
+            if (flake.x > w + 15) flake.x = -15;
+            else if (flake.x < -15) flake.x = w + 15;
+
+            snowCtx.fillStyle = flake.color + flake.alpha + ')';
+            snowCtx.beginPath();
+            snowCtx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+            snowCtx.fill();
+          }
+
+          // 2. Draw Cursor Trail Snowflakes (rendered on cursor canvas if present, else fallback)
+          const targetCursorCtx = cursorCtx || snowCtx;
+          if (cursorParticles.length > 0 && targetCursorCtx) {
+            for (let i = cursorParticles.length - 1; i >= 0; i--) {
+              const p = cursorParticles[i];
+              p.x += p.vx;
+              p.y += p.vy;
+              p.vy += 0.015;
+              p.life -= p.decay;
+              p.twinkle += p.twinkleSpeed;
+
+              if (p.life <= 0) {
+                cursorParticles.splice(i, 1);
+                continue;
+              }
+
+              const currentAlpha = Math.max(0, p.alpha * p.life * (0.8 + 0.2 * Math.sin(p.twinkle)));
+
+              if (p.isSparkle) {
+                targetCursorCtx.fillStyle = 'rgba(186, 230, 253, ' + (currentAlpha * 0.4) + ')';
+                targetCursorCtx.beginPath();
+                targetCursorCtx.arc(p.x, p.y, p.radius * 2.2, 0, Math.PI * 2);
+                targetCursorCtx.fill();
+              }
+
+              targetCursorCtx.fillStyle = 'rgba(240, 249, 255, ' + currentAlpha + ')';
+              targetCursorCtx.beginPath();
+              targetCursorCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+              targetCursorCtx.fill();
+            }
+          }
+
+          // 3. Draw Foreground Flakes (Layer 2, larger, soft halo on background canvas)
+          for (let i = 0; i < snowflakes.length; i++) {
+            const flake = snowflakes[i];
+            if (flake.layer !== 2) continue;
+
+            flake.y += flake.speedY;
+            flake.angle += flake.swaySpeed;
+            flake.x += Math.sin(flake.angle) * flake.swayAmp + breeze * 1.2;
+
+            if (flake.y > h + flake.radius + 10) {
+              flake.y = -(flake.radius + 10);
+              flake.x = Math.random() * w;
+            }
+            if (flake.x > w + 15) flake.x = -15;
+            else if (flake.x < -15) flake.x = w + 15;
+
+            // Soft outer halo
+            snowCtx.fillStyle = 'rgba(186, 230, 253, ' + (flake.alpha * 0.28) + ')';
+            snowCtx.beginPath();
+            snowCtx.arc(flake.x, flake.y, flake.radius * 1.8, 0, Math.PI * 2);
+            snowCtx.fill();
+
+            // Center core
+            snowCtx.fillStyle = flake.color + flake.alpha + ')';
+            snowCtx.beginPath();
+            snowCtx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+            snowCtx.fill();
+          }
+
+          snowAnimId = requestAnimationFrame(renderSnow);
+        }
+
+        function startSnow() {
+          if (snowAnimId) return;
+          if (!isSnowEnabled) return;
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          if (document.hidden) return;
+          if (!snowCanvas || !snowCtx) return;
+          resizeSnowCanvas();
+          if (snowflakes.length === 0) initSnowflakes();
+          snowAnimId = requestAnimationFrame(renderSnow);
+        }
+
+        function stopSnow() {
+          if (snowAnimId) {
+            cancelAnimationFrame(snowAnimId);
+            snowAnimId = null;
+          }
+          cursorParticles = [];
+          if (snowCtx && snowCanvas) {
+            snowCtx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
+          }
+          if (cursorCtx && cursorCanvas) {
+            cursorCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
+          }
+        }
+
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            stopSnow();
+          } else if (currentTheme === 'winter') {
+            startSnow();
+          }
+        });
+
+        window.addEventListener('resize', () => {
+          if (currentTheme === 'winter' && snowAnimId) {
+            resizeSnowCanvas();
+            initSnowflakes();
+          }
+        }, { passive: true });
+
+        if (snowToggleBtn) {
+          snowToggleBtn.addEventListener('click', e => {
+            e.stopPropagation();
+            isSnowEnabled = !isSnowEnabled;
+            try {
+              localStorage.setItem('portfolio-snow-enabled', String(isSnowEnabled));
+            } catch(e) {}
+            updateSnowToggleUI();
+            if (currentTheme === 'winter') {
+              if (isSnowEnabled) startSnow();
+              else stopSnow();
+            }
+          });
+        }
+
+        updateSnowToggleUI();
+
+        function hslToRgb(h, s, l) {
+          s /= 100;
+          l /= 100;
+          const k = n => (n + h / 30) % 12;
+          const a = s * Math.min(l, 1 - l);
+          const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+          return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
+        }
+
+        function startRgbLoop() {
+          if (rgbAnimationId) return;
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.setProperty('--dyn-hue', '340');
+            const r = hslToRgb(340, 90, 60);
+            document.documentElement.style.setProperty('--accent-rgb', r.join(', '));
+            return;
+          }
+          function step(timestamp) {
+            if (!lastRgbTime) lastRgbTime = timestamp;
+            const delta = timestamp - lastRgbTime;
+            lastRgbTime = timestamp;
+            dynHue = (dynHue + (delta * 0.02)) % 360;
+            const mainRgb = hslToRgb(dynHue, 90, 60);
+            const deepRgb = hslToRgb(dynHue, 90, 50);
+            const lightRgb = hslToRgb(dynHue, 95, 70);
+            const darkRgb = hslToRgb(dynHue, 85, 35);
+
+            document.documentElement.style.setProperty('--dyn-hue', Math.round(dynHue).toString());
+            document.documentElement.style.setProperty('--accent-rgb', mainRgb.join(', '));
+            document.documentElement.style.setProperty('--accent-deep-rgb', deepRgb.join(', '));
+            document.documentElement.style.setProperty('--accent-light-rgb', lightRgb.join(', '));
+            document.documentElement.style.setProperty('--accent-dark-rgb', darkRgb.join(', '));
+
+            rgbAnimationId = requestAnimationFrame(step);
+          }
+          rgbAnimationId = requestAnimationFrame(step);
+        }
+
+        function stopRgbLoop() {
+          if (rgbAnimationId) {
+            cancelAnimationFrame(rgbAnimationId);
+            rgbAnimationId = null;
+          }
+          document.documentElement.style.removeProperty('--dyn-hue');
+          document.documentElement.style.removeProperty('--accent-rgb');
+          document.documentElement.style.removeProperty('--accent-deep-rgb');
+          document.documentElement.style.removeProperty('--accent-light-rgb');
+          document.documentElement.style.removeProperty('--accent-dark-rgb');
+          lastRgbTime = 0;
+        }
+
+        function applyTheme(themeId) {
+          currentTheme = themeId;
+          document.documentElement.setAttribute('data-theme', themeId);
+          try {
+            localStorage.setItem('portfolio-accent-theme', themeId);
+          } catch (e) { }
+
+          if (themeId === 'rgb') {
+            startRgbLoop();
+          } else {
+            stopRgbLoop();
+          }
+
+          if (themeId === 'winter') {
+            startSnow();
+          } else {
+            stopSnow();
+          }
+
+          // Update swatches selection
+          const items = swatchesList.querySelectorAll('.theme-swatch-item');
+          items.forEach(item => {
+            const isSelected = item.getAttribute('data-theme-id') === themeId;
+            item.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+          });
+
+          // Update sidebar tooltip & preview dot
+          const themeObj = THEMES.find(t => t.id === themeId) || THEMES[0];
+          if (themeTooltip) themeTooltip.textContent = 'Theme: ' + themeObj.name;
+          if (themeDot) {
+            if (themeObj.isRgb) {
+              themeDot.style.background = 'conic-gradient(#ff0055, #ffaa00, #00ff66, #00ccff, #9900ff, #ff0055)';
+            } else if (themeObj.isWinter) {
+              themeDot.style.background = 'linear-gradient(135deg, #bae6fd, #38bdf8)';
+            } else {
+              themeDot.style.background = '';
+            }
+          }
+        }
+
+        // Populate swatches list
+        swatchesList.innerHTML = THEMES.map(t => `
         <button type="button" class="theme-swatch-item" data-theme-id="${t.id}" role="radio" aria-checked="${t.id === currentTheme ? 'true' : 'false'}" aria-label="${t.name} theme">
-          <span class="theme-swatch-circle ${t.isRgb ? 'theme-swatch-rgb-preview' : ''}" style="background: ${t.circleBg}; ${t.isWhite ? 'border: 1px solid rgba(255,255,255,0.6);' : ''}" aria-hidden="true"></span>
+          <span class="theme-swatch-circle ${t.isRgb ? 'theme-swatch-rgb-preview' : ''}" style="background: ${t.circleBg}; ${t.isWhite ? 'border: 1px solid rgba(255,255,255,0.6);' : ''} ${t.isWinter ? 'border: 1px solid rgba(186,230,253,0.6);' : ''}" aria-hidden="true"></span>
           <div class="theme-swatch-info">
-            <span class="theme-swatch-title">${t.name}</span>
+            <span class="theme-swatch-title">${t.name} ${t.isWinter ? '<span style="font-size:0.75rem;margin-left:4px;">❄</span>' : ''}</span>
             <span class="theme-swatch-subtitle">${t.desc}</span>
           </div>
           <span class="theme-swatch-status" aria-hidden="true">
@@ -5459,369 +6683,428 @@
         </button>
       `).join('');
 
-      // Click on swatch
-      swatchesList.addEventListener('click', e => {
-        const item = e.target.closest('.theme-swatch-item');
-        if (!item) return;
-        const themeId = item.getAttribute('data-theme-id');
-        if (themeId) applyTheme(themeId);
-      });
-
-      function positionPopover() {
-        if (window.innerWidth <= 768) {
-          themePopover.style.left = '';
-          themePopover.style.top = '';
-          return;
-        }
-        const sidebar = document.getElementById('glass-sidebar');
-        if (!sidebar) return;
-        const sidebarRect = sidebar.getBoundingClientRect();
-        themePopover.style.left = (sidebarRect.right + 14) + 'px';
-        const btnRect = themeBtn.getBoundingClientRect();
-        const popoverHeight = themePopover.offsetHeight || 380;
-        let top = btnRect.top + (btnRect.height / 2) - (popoverHeight / 2);
-        top = Math.max(20, Math.min(window.innerHeight - popoverHeight - 20, top));
-        themePopover.style.top = top + 'px';
-      }
-
-      function openPopover() {
-        themePopover.removeAttribute('hidden');
-        positionPopover();
-        void themePopover.offsetWidth;
-        themePopover.classList.add('active');
-        themeBtn.classList.add('is-open');
-        themeBtn.setAttribute('aria-expanded', 'true');
-      }
-
-      function closePopover() {
-        themePopover.classList.remove('active');
-        themeBtn.classList.remove('is-open');
-        themeBtn.setAttribute('aria-expanded', 'false');
-        setTimeout(() => {
-          if (!themePopover.classList.contains('active')) {
-            themePopover.setAttribute('hidden', '');
-          }
-        }, 240);
-      }
-
-      themeBtn.addEventListener('click', e => {
-        e.stopPropagation();
-        if (themePopover.classList.contains('active')) {
-          closePopover();
-        } else {
-          openPopover();
-        }
-      });
-
-      if (themeCloseBtn) {
-        themeCloseBtn.addEventListener('click', e => {
-          e.stopPropagation();
-          closePopover();
+        // Click on swatch
+        swatchesList.addEventListener('click', e => {
+          const item = e.target.closest('.theme-swatch-item');
+          if (!item) return;
+          const themeId = item.getAttribute('data-theme-id');
+          if (themeId) applyTheme(themeId);
         });
-      }
 
-      document.addEventListener('click', e => {
-        if (themePopover.classList.contains('active')) {
-          if (!themePopover.contains(e.target) && !themeBtn.contains(e.target)) {
-            closePopover();
+        function positionPopover() {
+          if (window.innerWidth <= 768) {
+            themePopover.style.left = '';
+            themePopover.style.top = '';
+            return;
           }
+          const sidebar = document.getElementById('glass-sidebar');
+          if (!sidebar) return;
+          const sidebarRect = sidebar.getBoundingClientRect();
+          themePopover.style.left = (sidebarRect.right + 14) + 'px';
+          const btnRect = themeBtn.getBoundingClientRect();
+          const popoverHeight = themePopover.offsetHeight || 380;
+          let top = btnRect.top + (btnRect.height / 2) - (popoverHeight / 2);
+          top = Math.max(20, Math.min(window.innerHeight - popoverHeight - 20, top));
+          themePopover.style.top = top + 'px';
         }
-      });
 
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && themePopover.classList.contains('active')) {
-          closePopover();
-          themeBtn.focus();
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        if (themePopover.classList.contains('active')) {
+        function openPopover() {
+          themePopover.removeAttribute('hidden');
           positionPopover();
-        }
-      }, { passive: true });
-
-      
-      /* ==========================================================================
-         CINEMATIC OPENING ANIMATION CONTROLLER WITH SYNCHRONIZED WEB AUDIO
-         ========================================================================== */
-      (function initOpeningAnimationSystem() {
-        const overlay = document.getElementById('opening-overlay');
-        const skipBtn = document.getElementById('opening-skip-btn');
-        const soundBtn = document.getElementById('opening-sound-btn');
-        const soundLabel = document.getElementById('opening-sound-label');
-        const soundIconOn = document.getElementById('sound-svg-on');
-        const soundIconOff = document.getElementById('sound-svg-off');
-
-        if (!overlay) return;
-
-        let audioCtx = null;
-        const storedSoundPref = localStorage.getItem('portfolio-sound-enabled');
-        let isSoundEnabled = storedSoundPref !== null ? storedSoundPref === 'true' : true;
-        let autoPlayTimer = null;
-        let isAnimating = false;
-
-        function getAudioContext() {
-          if (!audioCtx) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-          }
-          if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-          }
-          return audioCtx;
+          void themePopover.offsetWidth;
+          themePopover.classList.add('active');
+          themeBtn.classList.add('is-open');
+          themeBtn.setAttribute('aria-expanded', 'true');
         }
 
-        /* 
-           SYNTHESIZED CINEMATIC SOUND SEQUENCE:
-           1. 0.0s - 1.2s: Subtle cinematic synth rise
-           2. 0.9s - 1.9s: Smooth energy whoosh / transition sweep
-           3. 1.7s - 2.8s: Soft low impact sub-bass settlement
-        */
-        function playCinematicAudio(offsetSeconds = 0) {
-          if (!isSoundEnabled) return;
-          try {
-            const ctx = getAudioContext();
-            const start = ctx.currentTime + Math.max(0, offsetSeconds);
-            const master = ctx.createGain();
-            master.gain.setValueAtTime(0.20, start); // pleasant, quiet volume
-            master.connect(ctx.destination);
-
-            // 1. Synth Rise (Warm detuned dual-oscillator drone + lowpass sweep)
-            const osc1 = ctx.createOscillator();
-            const osc2 = ctx.createOscillator();
-            const filter = ctx.createBiquadFilter();
-            const gain = ctx.createGain();
-
-            osc1.type = 'sawtooth';
-            osc1.frequency.setValueAtTime(65.4, start);
-            osc1.frequency.exponentialRampToValueAtTime(130.8, start + 1.2);
-
-            osc2.type = 'sine';
-            osc2.frequency.setValueAtTime(65.0, start);
-            osc2.frequency.exponentialRampToValueAtTime(131.2, start + 1.2);
-
-            filter.type = 'lowpass';
-            filter.frequency.setValueAtTime(110, start);
-            filter.frequency.exponentialRampToValueAtTime(850, start + 1.15);
-            filter.Q.value = 2.0;
-
-            gain.gain.setValueAtTime(0.001, start);
-            gain.gain.exponentialRampToValueAtTime(0.65, start + 0.8);
-            gain.gain.exponentialRampToValueAtTime(0.001, start + 1.4);
-
-            osc1.connect(filter);
-            osc2.connect(filter);
-            filter.connect(gain);
-            gain.connect(master);
-
-            osc1.start(start);
-            osc2.start(start);
-            osc1.stop(start + 1.5);
-            osc2.stop(start + 1.5);
-
-            // 2. Whoosh Transition (Resonant bandpass swept pink/white noise)
-            const bufSize = ctx.sampleRate * 1.5;
-            const noiseBuf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
-            const data = noiseBuf.getChannelData(0);
-            for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
-
-            const noise = ctx.createBufferSource();
-            noise.buffer = noiseBuf;
-
-            const wFilter = ctx.createBiquadFilter();
-            wFilter.type = 'bandpass';
-            wFilter.frequency.setValueAtTime(260, start + 0.85);
-            wFilter.frequency.exponentialRampToValueAtTime(1900, start + 1.35);
-            wFilter.frequency.exponentialRampToValueAtTime(320, start + 1.85);
-            wFilter.Q.value = 3.2;
-
-            const wGain = ctx.createGain();
-            wGain.gain.setValueAtTime(0.001, start + 0.85);
-            wGain.gain.exponentialRampToValueAtTime(0.80, start + 1.3);
-            wGain.gain.exponentialRampToValueAtTime(0.001, start + 1.9);
-
-            noise.connect(wFilter);
-            wFilter.connect(wGain);
-            wGain.connect(master);
-            noise.start(start + 0.85);
-            noise.stop(start + 2.0);
-
-            // 3. Soft Low Impact Thud (Sub-bass drop + high sparkle resolution)
-            const sub = ctx.createOscillator();
-            const subF = ctx.createBiquadFilter();
-            const subG = ctx.createGain();
-
-            sub.type = 'sine';
-            sub.frequency.setValueAtTime(88, start + 1.65);
-            sub.frequency.exponentialRampToValueAtTime(36, start + 2.45);
-
-            subF.type = 'lowpass';
-            subF.frequency.setValueAtTime(180, start + 1.65);
-            subF.frequency.linearRampToValueAtTime(55, start + 2.5);
-
-            subG.gain.setValueAtTime(0.001, start + 1.65);
-            subG.gain.linearRampToValueAtTime(0.85, start + 1.72);
-            subG.gain.exponentialRampToValueAtTime(0.001, start + 2.75);
-
-            sub.connect(subF);
-            subF.connect(subG);
-            subG.connect(master);
-            sub.start(start + 1.65);
-            sub.stop(start + 2.85);
-
-            // 3b. Subtle high harmonic sparkle accent (bell chime)
-            const chime = ctx.createOscillator();
-            const chimeG = ctx.createGain();
-            chime.type = 'sine';
-            chime.frequency.setValueAtTime(1046.5, start + 1.68); // High C
-            chimeG.gain.setValueAtTime(0.001, start + 1.68);
-            chimeG.gain.linearRampToValueAtTime(0.10, start + 1.72);
-            chimeG.gain.exponentialRampToValueAtTime(0.001, start + 2.15);
-            chime.connect(chimeG);
-            chimeG.connect(master);
-            chime.start(start + 1.68);
-            chime.stop(start + 2.2);
-          } catch(e) {
-            console.warn('Audio synthesis notice:', e);
-          }
-        }
-
-        function updateSoundControlUI() {
-          if (!soundBtn) return;
-          soundBtn.classList.toggle('is-active', isSoundEnabled);
-          soundBtn.setAttribute('aria-pressed', isSoundEnabled ? 'true' : 'false');
-          if (soundLabel) soundLabel.textContent = isSoundEnabled ? 'Sound: On' : 'Sound: Off';
-          if (soundIconOn) soundIconOn.style.display = isSoundEnabled ? 'inline-block' : 'none';
-          if (soundIconOff) soundIconOff.style.display = isSoundEnabled ? 'none' : 'inline-block';
-        }
-
-        function toggleSound() {
-          isSoundEnabled = !isSoundEnabled;
-          try {
-            localStorage.setItem('portfolio-sound-enabled', String(isSoundEnabled));
-          } catch(e) {}
-          updateSoundControlUI();
-
-          if (isSoundEnabled) {
-            getAudioContext();
-            if (isAnimating) {
-              playCinematicAudio();
+        function closePopover() {
+          themePopover.classList.remove('active');
+          themeBtn.classList.remove('is-open');
+          themeBtn.setAttribute('aria-expanded', 'false');
+          setTimeout(() => {
+            if (!themePopover.classList.contains('active')) {
+              themePopover.setAttribute('hidden', '');
             }
-          }
+          }, 240);
         }
 
-        if (soundBtn) {
-          soundBtn.addEventListener('click', e => {
+        themeBtn.addEventListener('click', e => {
+          e.stopPropagation();
+          if (themePopover.classList.contains('active')) {
+            closePopover();
+          } else {
+            openPopover();
+          }
+        });
+
+        if (themeCloseBtn) {
+          themeCloseBtn.addEventListener('click', e => {
             e.stopPropagation();
-            toggleSound();
+            closePopover();
           });
         }
 
-        // Spawn ambient particles
-        const particlesContainer = document.getElementById('opening-particles');
-        if (particlesContainer && particlesContainer.childElementCount === 0) {
-          for (let i = 0; i < 24; i++) {
-            const p = document.createElement('div');
-            p.className = 'opening-particle';
-            p.style.left = (Math.random() * 100) + '%';
-            p.style.top = (45 + Math.random() * 35) + '%';
-            p.style.animationDelay = (Math.random() * 2) + 's';
-            p.style.animationDuration = (1.8 + Math.random() * 1.5) + 's';
-            particlesContainer.appendChild(p);
+        document.addEventListener('click', e => {
+          if (themePopover.classList.contains('active')) {
+            if (!themePopover.contains(e.target) && !themeBtn.contains(e.target)) {
+              closePopover();
+            }
           }
-        }
+        });
 
-        function finishIntro() {
-          if (!isAnimating) return;
-          isAnimating = false;
-          clearTimeout(autoPlayTimer);
-          try {
-            sessionStorage.setItem('portfolio-opening-played', 'true');
-          } catch(e) {}
-          overlay.classList.add('is-finished');
-          setTimeout(() => {
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && themePopover.classList.contains('active')) {
+            closePopover();
+            themeBtn.focus();
+          }
+        });
+
+        window.addEventListener('resize', () => {
+          if (themePopover.classList.contains('active')) {
+            positionPopover();
+          }
+        }, { passive: true });
+
+
+        /* ==========================================================================
+           CINEMATIC OPENING ANIMATION CONTROLLER WITH SYNCHRONIZED WEB AUDIO
+           ========================================================================== */
+        (function initOpeningAnimationSystem() {
+          const overlay = document.getElementById('opening-overlay');
+          const skipBtn = document.getElementById('opening-skip-btn');
+          const soundBtn = document.getElementById('opening-sound-btn');
+          const soundLabel = document.getElementById('opening-sound-label');
+          const soundIconOn = document.getElementById('sound-svg-on');
+          const soundIconOff = document.getElementById('sound-svg-off');
+
+          if (!overlay) return;
+
+          let audioCtx = null;
+          const storedSoundPref = localStorage.getItem('portfolio-sound-enabled');
+          let isSoundEnabled = storedSoundPref !== null ? storedSoundPref === 'true' : true;
+          let autoPlayTimer = null;
+          let isAnimating = false;
+
+          function getAudioContext() {
+            if (!audioCtx) {
+              audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+              audioCtx.resume();
+            }
+            return audioCtx;
+          }
+
+          /* 
+             SYNTHESIZED CINEMATIC SOUND SEQUENCE:
+             1. 0.0s - 1.2s: Subtle cinematic synth rise
+             2. 0.9s - 1.9s: Smooth energy whoosh / transition sweep
+             3. 1.7s - 2.8s: Soft low impact sub-bass settlement
+          */
+          function playCinematicAudio(offsetSeconds = 0) {
+            if (!isSoundEnabled) return;
+            try {
+              const ctx = getAudioContext();
+              const start = ctx.currentTime + Math.max(0, offsetSeconds);
+              const master = ctx.createGain();
+              master.gain.setValueAtTime(0.20, start); // pleasant, quiet volume
+              master.connect(ctx.destination);
+
+              // 1. Synth Rise (Warm detuned dual-oscillator drone + lowpass sweep)
+              const osc1 = ctx.createOscillator();
+              const osc2 = ctx.createOscillator();
+              const filter = ctx.createBiquadFilter();
+              const gain = ctx.createGain();
+
+              osc1.type = 'sawtooth';
+              osc1.frequency.setValueAtTime(65.4, start);
+              osc1.frequency.exponentialRampToValueAtTime(130.8, start + 1.2);
+
+              osc2.type = 'sine';
+              osc2.frequency.setValueAtTime(65.0, start);
+              osc2.frequency.exponentialRampToValueAtTime(131.2, start + 1.2);
+
+              filter.type = 'lowpass';
+              filter.frequency.setValueAtTime(110, start);
+              filter.frequency.exponentialRampToValueAtTime(850, start + 1.15);
+              filter.Q.value = 2.0;
+
+              gain.gain.setValueAtTime(0.001, start);
+              gain.gain.exponentialRampToValueAtTime(0.65, start + 0.8);
+              gain.gain.exponentialRampToValueAtTime(0.001, start + 1.4);
+
+              osc1.connect(filter);
+              osc2.connect(filter);
+              filter.connect(gain);
+              gain.connect(master);
+
+              osc1.start(start);
+              osc2.start(start);
+              osc1.stop(start + 1.5);
+              osc2.stop(start + 1.5);
+
+              // 2. Whoosh Transition (Resonant bandpass swept pink/white noise)
+              const bufSize = ctx.sampleRate * 1.5;
+              const noiseBuf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+              const data = noiseBuf.getChannelData(0);
+              for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+
+              const noise = ctx.createBufferSource();
+              noise.buffer = noiseBuf;
+
+              const wFilter = ctx.createBiquadFilter();
+              wFilter.type = 'bandpass';
+              wFilter.frequency.setValueAtTime(260, start + 0.85);
+              wFilter.frequency.exponentialRampToValueAtTime(1900, start + 1.35);
+              wFilter.frequency.exponentialRampToValueAtTime(320, start + 1.85);
+              wFilter.Q.value = 3.2;
+
+              const wGain = ctx.createGain();
+              wGain.gain.setValueAtTime(0.001, start + 0.85);
+              wGain.gain.exponentialRampToValueAtTime(0.80, start + 1.3);
+              wGain.gain.exponentialRampToValueAtTime(0.001, start + 1.9);
+
+              noise.connect(wFilter);
+              wFilter.connect(wGain);
+              wGain.connect(master);
+              noise.start(start + 0.85);
+              noise.stop(start + 2.0);
+
+              // 3. Soft Low Impact Thud (Sub-bass drop + high sparkle resolution)
+              const sub = ctx.createOscillator();
+              const subF = ctx.createBiquadFilter();
+              const subG = ctx.createGain();
+
+              sub.type = 'sine';
+              sub.frequency.setValueAtTime(88, start + 1.65);
+              sub.frequency.exponentialRampToValueAtTime(36, start + 2.45);
+
+              subF.type = 'lowpass';
+              subF.frequency.setValueAtTime(180, start + 1.65);
+              subF.frequency.linearRampToValueAtTime(55, start + 2.5);
+
+              subG.gain.setValueAtTime(0.001, start + 1.65);
+              subG.gain.linearRampToValueAtTime(0.85, start + 1.72);
+              subG.gain.exponentialRampToValueAtTime(0.001, start + 2.75);
+
+              sub.connect(subF);
+              subF.connect(subG);
+              subG.connect(master);
+              sub.start(start + 1.65);
+              sub.stop(start + 2.85);
+
+              // 3b. Subtle high harmonic sparkle accent (bell chime)
+              const chime = ctx.createOscillator();
+              const chimeG = ctx.createGain();
+              chime.type = 'sine';
+              chime.frequency.setValueAtTime(1046.5, start + 1.68); // High C
+              chimeG.gain.setValueAtTime(0.001, start + 1.68);
+              chimeG.gain.linearRampToValueAtTime(0.10, start + 1.72);
+              chimeG.gain.exponentialRampToValueAtTime(0.001, start + 2.15);
+              chime.connect(chimeG);
+              chimeG.connect(master);
+              chime.start(start + 1.68);
+              chime.stop(start + 2.2);
+            } catch (e) {
+              console.warn('Audio synthesis notice:', e);
+            }
+          }
+
+          function updateSoundControlUI() {
+            if (!soundBtn) return;
+            soundBtn.classList.toggle('is-active', isSoundEnabled);
+            soundBtn.setAttribute('aria-pressed', isSoundEnabled ? 'true' : 'false');
+            if (soundLabel) soundLabel.textContent = isSoundEnabled ? 'Sound: On' : 'Sound: Off';
+            if (soundIconOn) soundIconOn.style.display = isSoundEnabled ? 'inline-block' : 'none';
+            if (soundIconOff) soundIconOff.style.display = isSoundEnabled ? 'none' : 'inline-block';
+          }
+
+          function toggleSound() {
+            isSoundEnabled = !isSoundEnabled;
+            try {
+              localStorage.setItem('portfolio-sound-enabled', String(isSoundEnabled));
+            } catch (e) { }
+            updateSoundControlUI();
+
+            if (isSoundEnabled) {
+              getAudioContext();
+              if (isAnimating) {
+                playCinematicAudio();
+              }
+            }
+          }
+
+          if (soundBtn) {
+            soundBtn.addEventListener('click', e => {
+              e.stopPropagation();
+              toggleSound();
+            });
+          }
+
+          // Spawn ambient particles
+          const particlesContainer = document.getElementById('opening-particles');
+          if (particlesContainer && particlesContainer.childElementCount === 0) {
+            for (let i = 0; i < 24; i++) {
+              const p = document.createElement('div');
+              p.className = 'opening-particle';
+              p.style.left = (Math.random() * 100) + '%';
+              p.style.top = (45 + Math.random() * 35) + '%';
+              p.style.animationDelay = (Math.random() * 2) + 's';
+              p.style.animationDuration = (1.8 + Math.random() * 1.5) + 's';
+              particlesContainer.appendChild(p);
+            }
+          }
+
+          function finishIntro() {
+            if (!isAnimating) return;
+            isAnimating = false;
+            clearTimeout(autoPlayTimer);
+            try {
+              sessionStorage.setItem('portfolio-opening-played', 'true');
+            } catch (e) { }
+            overlay.classList.add('is-finished');
+            setTimeout(() => {
+              overlay.style.display = 'none';
+              overlay.setAttribute('hidden', '');
+            }, 750);
+          }
+
+          function runIntroSequence(forceAudio = false) {
+            isAnimating = true;
+            clearTimeout(autoPlayTimer);
+
+            if (forceAudio) {
+              isSoundEnabled = true;
+              try { localStorage.setItem('portfolio-sound-enabled', 'true'); } catch (e) { }
+            }
+            updateSoundControlUI();
+
+            overlay.removeAttribute('hidden');
+            overlay.style.display = 'flex';
+            overlay.classList.remove('is-finished');
+
+            // Trigger reflow to restart CSS keyframe animations
+            const tPort = document.getElementById('anim-title-portfolio');
+            const tName = document.getElementById('anim-title-name');
+            const tSweep = document.getElementById('anim-sweep-flare');
+            const tSub = document.getElementById('anim-opening-subline');
+            [tPort, tName, tSweep, tSub].forEach(el => {
+              if (el) {
+                el.style.animation = 'none';
+                void el.offsetWidth;
+                el.style.animation = '';
+              }
+            });
+
+            // Play synchronized audio if enabled
+            if (isSoundEnabled) {
+              playCinematicAudio(0.05);
+            }
+
+            autoPlayTimer = setTimeout(finishIntro, 2850);
+          }
+
+          if (skipBtn) {
+            skipBtn.addEventListener('click', finishIntro);
+          }
+
+          // Resume audio if visitor interacts with page while intro is animating and sound was enabled
+          const unlockOnUserGesture = () => {
+            if (audioCtx && audioCtx.state === 'suspended' && isSoundEnabled && isAnimating) {
+              audioCtx.resume();
+            }
+          };
+          window.addEventListener('click', unlockOnUserGesture, { passive: true });
+          window.addEventListener('touchstart', unlockOnUserGesture, { passive: true });
+
+          // Dismiss on user scroll or keyboard action
+          const onUserDismiss = () => {
+            if (isAnimating) finishIntro();
+          };
+          window.addEventListener('wheel', onUserDismiss, { passive: true });
+          window.addEventListener('keydown', e => {
+            if (e.key === 'Escape' || e.key === ' ' || e.key === 'ArrowDown') onUserDismiss();
+          });
+
+          // Initial launch check
+          const alreadyPlayed = sessionStorage.getItem('portfolio-opening-played');
+          const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          if (alreadyPlayed || reducedMotion) {
+            overlay.classList.add('is-finished');
             overlay.style.display = 'none';
             overlay.setAttribute('hidden', '');
-          }, 750);
-        }
-
-        function runIntroSequence(forceAudio = false) {
-          isAnimating = true;
-          clearTimeout(autoPlayTimer);
-
-          if (forceAudio) {
-            isSoundEnabled = true;
-            try { localStorage.setItem('portfolio-sound-enabled', 'true'); } catch(e) {}
+            isAnimating = false;
+          } else {
+            runIntroSequence();
           }
-          updateSoundControlUI();
+        })();
 
-          overlay.removeAttribute('hidden');
-          overlay.style.display = 'flex';
-          overlay.classList.remove('is-finished');
+        /* ==========================================================================
+           SIDEBAR DATE & LIVE LOCAL CLOCK CONTROLLER
+           ========================================================================== */
+        (function initSidebarClock() {
+          const timeEl = document.getElementById('sidebar-clock-time');
+          const dateEl = document.getElementById('sidebar-clock-date');
+          const tooltipEl = document.getElementById('sidebar-clock-tooltip');
 
-          // Trigger reflow to restart CSS keyframe animations
-          const tPort = document.getElementById('anim-title-portfolio');
-          const tName = document.getElementById('anim-title-name');
-          const tSweep = document.getElementById('anim-sweep-flare');
-          const tSub = document.getElementById('anim-opening-subline');
-          [tPort, tName, tSweep, tSub].forEach(el => {
-            if (el) {
-              el.style.animation = 'none';
-              void el.offsetWidth;
-              el.style.animation = '';
+          function updateClock() {
+            const now = new Date();
+
+            // Live local time
+            const timeStr = now.toLocaleTimeString(undefined, {
+              hour: 'numeric',
+              minute: '2-digit',
+              hour12: true
+            });
+
+            // Live local date
+            const dateStr = now.toLocaleDateString(undefined, {
+              weekday: 'short',
+              month: 'short',
+              day: 'numeric'
+            });
+
+            if (timeEl && timeEl.textContent !== timeStr) {
+              timeEl.textContent = timeStr;
+            }
+            if (dateEl && dateEl.textContent !== dateStr) {
+              dateEl.textContent = dateStr;
+            }
+
+            if (tooltipEl) {
+              const fullDateStr = now.toLocaleDateString(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              });
+              const fullTimeStr = now.toLocaleTimeString(undefined, {
+                hour: 'numeric',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true,
+                timeZoneName: 'short'
+              });
+              tooltipEl.textContent = `${fullDateStr} · ${fullTimeStr}`;
+            }
+          }
+
+          updateClock();
+          setInterval(updateClock, 1000);
+
+          document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+              updateClock();
             }
           });
+        })();
 
-          // Play synchronized audio if enabled
-          if (isSoundEnabled) {
-            playCinematicAudio(0.05);
-          }
-
-          autoPlayTimer = setTimeout(finishIntro, 2850);
-        }
-
-        if (skipBtn) {
-          skipBtn.addEventListener('click', finishIntro);
-        }
-
-        // Resume audio if visitor interacts with page while intro is animating and sound was enabled
-        const unlockOnUserGesture = () => {
-          if (audioCtx && audioCtx.state === 'suspended' && isSoundEnabled && isAnimating) {
-            audioCtx.resume();
-          }
-        };
-        window.addEventListener('click', unlockOnUserGesture, { passive: true });
-        window.addEventListener('touchstart', unlockOnUserGesture, { passive: true });
-
-        // Dismiss on user scroll or keyboard action
-        const onUserDismiss = () => {
-          if (isAnimating) finishIntro();
-        };
-        window.addEventListener('wheel', onUserDismiss, { passive: true });
-        window.addEventListener('keydown', e => {
-          if (e.key === 'Escape' || e.key === ' ' || e.key === 'ArrowDown') onUserDismiss();
-        });
-
-        // Initial launch check
-        const alreadyPlayed = sessionStorage.getItem('portfolio-opening-played');
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        if (alreadyPlayed || reducedMotion) {
-          overlay.classList.add('is-finished');
-          overlay.style.display = 'none';
-          overlay.setAttribute('hidden', '');
-          isAnimating = false;
-        } else {
-          runIntroSequence();
-        }
+        // Apply initial theme
+        applyTheme(currentTheme);
       })();
-
-      // Apply initial theme
-      applyTheme(currentTheme);
-    })();
     })();
   </script>
 </body>
 
 </html>
-
