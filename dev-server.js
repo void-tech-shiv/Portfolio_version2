@@ -42,7 +42,8 @@ const MIME_TYPES = {
   '.jpeg': 'image/jpeg',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
-  '.webp': 'image/webp'
+  '.webp': 'image/webp',
+  '.webmanifest': 'application/manifest+json; charset=utf-8'
 };
 
 // Route mapping for /api/*

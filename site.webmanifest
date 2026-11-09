@@ -1,0 +1,19 @@
+{
+  "name": "Shivanshu Satyajeet | Software Developer | Portfolio",
+  "short_name": "Shivanshu",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#060608",
+  "background_color": "#060608",
+  "display": "standalone"
+}
