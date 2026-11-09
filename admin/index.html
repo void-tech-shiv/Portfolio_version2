@@ -2088,14 +2088,21 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
           });
-          const data = await res.json();
 
-          if (res.ok && data.success) {
+          let data = null;
+          try {
+            data = await res.json();
+          } catch (e) { }
+
+          if (res.ok && data && data.success) {
             state.authenticated = true;
             state.admin = data.admin;
             showDashboard();
+          } else if (res.status === 404 || !data) {
+            loginAlert.innerHTML = '<strong>Backend API is not available on this domain.</strong><br><code>codedev.co.in</code> is currently hosted on static GitHub Pages. Please complete deployment on <strong>Vercel</strong> to activate the backend API and MongoDB connection.';
+            loginAlert.style.display = 'block';
           } else {
-            loginAlert.textContent = data.message || 'Invalid email or password.';
+            loginAlert.textContent = (data && data.message) || 'Invalid email or password.';
             loginAlert.style.display = 'block';
           }
         } catch (err) {
