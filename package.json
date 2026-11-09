@@ -1,0 +1,21 @@
+{
+  "name": "shivanshu-satyajeet-portfolio",
+  "version": "2.0.0",
+  "description": "Portfolio of Shivanshu Satyajeet with secure Vercel Serverless API and MongoDB Atlas backend",
+  "main": "api/index.js",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "seed": "node scripts/seed-mongo.js",
+    "create-owner": "node scripts/create-owner.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie": "^1.0.2",
+    "mongodb": "^6.12.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "private": true
+}
+

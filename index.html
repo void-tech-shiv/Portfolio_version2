@@ -704,7 +704,7 @@
       transform: none !important;
       width: 100%;
       margin-bottom: 64px;
-      scroll-margin-top: 108px;
+      scroll-margin-top: 112px;
       position: relative;
     }
 
@@ -712,16 +712,24 @@
       margin-bottom: 0;
     }
 
+    #certificates {
+      min-height: calc(100vh - 140px);
+      min-height: calc(100dvh - 140px);
+      margin-bottom: 72px;
+      scroll-margin-top: 112px;
+      position: relative;
+    }
+
     #contact {
-      min-height: 100vh;
-      min-height: 100dvh;
+      min-height: calc(100vh - 100px);
+      min-height: calc(100dvh - 100px);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       margin-bottom: 0;
-      padding-top: 20px;
-      padding-bottom: 60px;
-      scroll-margin-top: 0;
+      padding-top: 36px;
+      padding-bottom: 80px;
+      scroll-margin-top: 112px;
       box-sizing: border-box;
       position: relative;
     }
@@ -2444,19 +2452,18 @@
       box-shadow: 0 4px 12px rgba(var(--accent-deep-rgb), 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
     }
 
-    /* 6. CONTACT VIEW - TWO COLUMN DESKTOP LAYOUT */
+    /* 6. CONTACT VIEW - TWO COLUMN DESKTOP & CLEAN STACKED MOBILE LAYOUT */
     .contact-layout {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
       width: 100%;
-      min-height: calc(100vh - 160px);
+      max-width: 1160px;
+      margin: 0 auto;
       box-sizing: border-box;
-      padding: 30px 16px;
-      margin: 0;
+      padding: 16px 12px 40px;
+      align-items: start;
     }
 
     .contact-intro-block {
@@ -2465,7 +2472,7 @@
       align-items: center;
       text-align: center;
       width: 100%;
-      max-width: 440px;
+      max-width: 480px;
       margin: 0 auto;
     }
 
@@ -2483,7 +2490,7 @@
       color: #ffffff;
       margin-bottom: 16px;
       text-align: center;
-      max-width: 440px;
+      max-width: 480px;
     }
 
     .contact-intro-block p {
@@ -2491,7 +2498,7 @@
       font-size: 1.02rem;
       line-height: 1.6;
       margin: 0 auto 28px;
-      max-width: 420px;
+      max-width: 440px;
       text-align: center;
     }
 
@@ -2501,26 +2508,26 @@
       justify-content: center;
       align-items: center;
       gap: 12px;
-      max-width: 440px;
+      max-width: 460px;
     }
 
-    /* Desktop Two-Column Arrangement: Left content column, open center for animation, right area for popup */
-    @media (min-width: 900px) {
+    /* Desktop Two-Column Arrangement: Left content column, right form column */
+    @media (min-width: 960px) {
       .contact-layout {
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 40px 20px 40px 12px;
+        grid-template-columns: minmax(340px, 460px) minmax(380px, 520px);
+        justify-content: space-between;
+        gap: clamp(36px, 5vw, 64px);
+        padding: 16px 16px 40px 8px;
+        text-align: left;
       }
 
       .contact-intro-block {
         width: 100%;
-        max-width: 440px;
+        max-width: 460px;
         text-align: left;
         align-items: flex-start;
         margin: 0;
-        transform: translateY(60px);
-        flex-shrink: 0;
+        transform: none;
       }
 
       .contact-intro-block .section-kicker {
@@ -2529,17 +2536,377 @@
 
       .contact-intro-block h2 {
         text-align: left;
-        font-size: clamp(2.4rem, 4vw, 3.6rem);
+        font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+        max-width: 460px;
       }
 
       .contact-intro-block p {
         text-align: left;
         margin: 0 0 28px 0;
+        max-width: 440px;
       }
 
       .contact-buttons {
         justify-content: flex-start;
       }
+    }
+
+    /* 6B. INTERACTIVE VISITOR ENQUIRY & FEEDBACK FORM CARD */
+    .contact-form-card {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 24px 26px;
+      border-radius: 24px;
+      background: var(--card-bg, rgba(26, 12, 16, 0.82));
+      border: 1px solid var(--border-subtle);
+      border-top-color: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(32px) saturate(150%);
+      -webkit-backdrop-filter: blur(32px) saturate(150%);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+      text-align: left;
+      position: relative;
+      z-index: 2;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 960px) {
+      .contact-form-card {
+        margin: 0;
+        max-width: 520px;
+        transform: none;
+      }
+    }
+
+    .contact-form-tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 20px;
+    }
+
+    .form-tab-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+    }
+
+    .form-tab-btn:hover {
+      color: #ffffff;
+    }
+
+    .form-tab-btn.active {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 520px) {
+      .contact-input-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-field {
+      margin-bottom: 12px;
+    }
+
+    .contact-field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-input:focus {
+      border-color: var(--accent-main);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    /* ------------------------------------------------------------- */
+    /* CUSTOM ACCESSIBLE DROPDOWN / SELECT STYLING                   */
+    /* ------------------------------------------------------------- */
+    .custom-select {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Visually hidden native select kept for form serialization & fallback */
+    .visually-hidden-select {
+      position: absolute !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 1px !important;
+      height: 1px !important;
+      margin: -1px !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      border: 0 !important;
+    }
+
+    /* Native select dark fallback */
+    select.contact-input {
+      color-scheme: dark;
+      background-color: #0b0d12;
+      color: #ffffff;
+    }
+
+    select.contact-input option {
+      background-color: #0b0d12;
+      color: #ffffff;
+    }
+
+    /* Closed Trigger Field */
+    .custom-select-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.14));
+      border-top-color: rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.88rem;
+      cursor: pointer;
+      text-align: left;
+      user-select: none;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .custom-select-trigger:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .custom-select-trigger:focus,
+    .custom-select.is-open .custom-select-trigger {
+      outline: none;
+      border-color: rgba(56, 189, 248, 0.65);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18), inset 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .custom-select-value {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #ffffff;
+    }
+
+    .custom-select-arrow {
+      display: inline-grid;
+      place-items: center;
+      color: var(--text-muted, #94a3b8);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .custom-select.is-open .custom-select-arrow {
+      transform: rotate(180deg);
+      color: #38bdf8;
+    }
+
+    /* Dropdown Options Popup List */
+    .custom-select-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 100%;
+      width: max-content;
+      max-width: min(340px, 92vw);
+      z-index: 150;
+      list-style: none;
+      margin: 0;
+      padding: 6px;
+      border-radius: 14px;
+      background: linear-gradient(165deg, rgba(20, 24, 33, 0.98) 0%, rgba(10, 12, 18, 0.99) 100%);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-top-color: rgba(255, 255, 255, 0.35);
+      border-bottom-color: rgba(56, 189, 248, 0.25);
+      box-shadow:
+        0 18px 45px -8px rgba(0, 0, 0, 0.85),
+        0 0 20px rgba(56, 189, 248, 0.1),
+        inset 0 1.2px 1px 0 rgba(255, 255, 255, 0.25);
+      max-height: 260px;
+      overflow-y: auto;
+      display: none;
+      animation: customSelectFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .custom-select.is-open .custom-select-dropdown {
+      display: block;
+    }
+
+    @keyframes customSelectFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-4px) scale(0.99);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Dropdown Option Items */
+    .custom-select-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 9px;
+      color: #e2e8f0;
+      font-size: 0.86rem;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid transparent;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    /* Subtle blue hover and keyboard-focus states */
+    .custom-select-option:hover,
+    .custom-select-option.is-focused {
+      background: rgba(56, 189, 248, 0.12);
+      color: #ffffff;
+      border-color: rgba(56, 189, 248, 0.25);
+    }
+
+    /* Selected state */
+    .custom-select-option.is-selected {
+      background: rgba(56, 189, 248, 0.2);
+      color: #ffffff;
+      font-weight: 600;
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    .custom-select-option .opt-label {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .custom-select-option .opt-check {
+      color: #38bdf8;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .custom-select-option.is-selected .opt-check {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .contact-textarea {
+      min-height: 95px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .contact-consent-box {
+      margin-bottom: 16px;
+    }
+
+    .contact-checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      cursor: pointer;
+    }
+
+    .contact-checkbox-label input {
+      margin-top: 2px;
+      accent-color: var(--accent-main);
+      flex-shrink: 0;
+    }
+
+    .contact-feedback-note {
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+
+    .contact-submit-btn {
+      width: 100%;
+      justify-content: center;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.92rem;
+      padding: 12px 20px;
+      border: none;
+    }
+
+    .form-alert {
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+
+    .form-alert.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+    }
+
+    .form-alert.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
     }
 
     .button-find-online {
@@ -3088,6 +3455,71 @@
 
       .social-popup-card.active {
         transform: scale(1) !important;
+      }
+
+      .portfolio-section,
+      .page-view,
+      #certificates,
+      #contact {
+        scroll-margin-top: 92px;
+      }
+
+      #contact {
+        padding-top: 16px;
+        padding-bottom: 96px;
+      }
+
+      .contact-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px 0 32px;
+        gap: 28px;
+        box-sizing: border-box;
+      }
+
+      .contact-intro-block {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
+        margin: 0 auto;
+        transform: none;
+      }
+
+      .contact-intro-block .section-kicker {
+        text-align: center;
+      }
+
+      .contact-intro-block h2 {
+        text-align: center;
+        font-size: clamp(2rem, 8.5vw, 2.6rem);
+        max-width: 100%;
+      }
+
+      .contact-intro-block p {
+        text-align: center;
+        margin: 0 auto 24px;
+        max-width: 360px;
+      }
+
+      .contact-buttons {
+        justify-content: center;
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+
+      .contact-form-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px 18px;
+        border-radius: 20px;
+        box-sizing: border-box;
       }
 
       .site-footer {
@@ -5097,6 +5529,166 @@
             </div>
           </div>
 
+          <!-- INTERACTIVE VISITOR ENQUIRY & FEEDBACK PORTAL -->
+          <div class="contact-form-card" id="contact-form-card">
+            <div class="contact-form-tabs" role="tablist">
+              <button type="button" class="form-tab-btn active" id="btn-tab-enquiry" role="tab" aria-selected="true"
+                aria-controls="panel-contact-enquiry">
+                Project Enquiry
+              </button>
+              <button type="button" class="form-tab-btn" id="btn-tab-feedback" role="tab" aria-selected="false"
+                aria-controls="panel-contact-feedback">
+                Leave Feedback ✦
+              </button>
+            </div>
+
+            <!-- ENQUIRY FORM PANEL -->
+            <div class="form-panel active" id="panel-contact-enquiry" role="tabpanel" aria-labelledby="btn-tab-enquiry">
+              <div class="form-alert" id="enquiry-form-alert" style="display:none;" role="alert"></div>
+              <form id="portfolio-enquiry-form" novalidate>
+                <!-- Anti-spam honeypot (hidden from real visitors) -->
+                <input type="text" name="company_url" style="display:none!important;" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                <div class="contact-input-row">
+                  <div class="contact-field">
+                    <label for="enquiry-name">Your Name *</label>
+                    <input type="text" id="enquiry-name" class="contact-input" required autocomplete="name" placeholder="Shivanshu">
+                  </div>
+                  <div class="contact-field">
+                    <label for="enquiry-email">Your Email *</label>
+                    <input type="email" id="enquiry-email" class="contact-input" required autocomplete="email" placeholder="name@domain.com">
+                  </div>
+                </div>
+
+                <div class="contact-field">
+                  <label for="enquiry-topic-trigger" id="label-enquiry-topic">Project / Subject</label>
+                  <div class="custom-select" data-custom-select="enquiry-topic">
+                    <select id="enquiry-topic" class="contact-input visually-hidden-select" tabindex="-1" aria-hidden="true">
+                      <option value="Website or Web Application" selected>Website or Web Application</option>
+                      <option value="Software Tool / Desktop">Software Tool / Desktop</option>
+                      <option value="AI / Machine Learning / Data">AI / Machine Learning / Data</option>
+                      <option value="General Collaboration or Question">General Collaboration or Question</option>
+                    </select>
+                    <button type="button" class="custom-select-trigger contact-input" id="enquiry-topic-trigger"
+                      role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="enquiry-topic-dropdown"
+                      aria-labelledby="label-enquiry-topic enquiry-topic-value">
+                      <span class="custom-select-value" id="enquiry-topic-value">Website or Web Application</span>
+                      <span class="custom-select-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                      </span>
+                    </button>
+                    <ul class="custom-select-dropdown" id="enquiry-topic-dropdown" role="listbox" aria-labelledby="label-enquiry-topic" tabindex="-1">
+                      <li class="custom-select-option is-selected" role="option" aria-selected="true" data-value="Website or Web Application" id="enquiry-topic-opt-0">
+                        <span class="opt-label">Website or Web Application</span>
+                        <svg class="opt-check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </li>
+                      <li class="custom-select-option" role="option" aria-selected="false" data-value="Software Tool / Desktop" id="enquiry-topic-opt-1">
+                        <span class="opt-label">Software Tool / Desktop</span>
+                        <svg class="opt-check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </li>
+                      <li class="custom-select-option" role="option" aria-selected="false" data-value="AI / Machine Learning / Data" id="enquiry-topic-opt-2">
+                        <span class="opt-label">AI / Machine Learning / Data</span>
+                        <svg class="opt-check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </li>
+                      <li class="custom-select-option" role="option" aria-selected="false" data-value="General Collaboration or Question" id="enquiry-topic-opt-3">
+                        <span class="opt-label">General Collaboration or Question</span>
+                        <svg class="opt-check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="contact-field">
+                  <label for="enquiry-message">Brief Details / Requirements *</label>
+                  <textarea id="enquiry-message" class="contact-input contact-textarea" required minlength="10" maxlength="2000"
+                    placeholder="Share a short brief, desired timeline, or what you'd like to build together..."></textarea>
+                </div>
+
+                <div class="contact-consent-box">
+                  <label class="contact-checkbox-label">
+                    <input type="checkbox" id="enquiry-consent" required checked>
+                    <span>I consent to my details being used strictly by Shivanshu Satyajeet to respond to this enquiry.</span>
+                  </label>
+                </div>
+
+                <button type="submit" class="button-primary contact-submit-btn" id="btn-submit-enquiry">
+                  <span>Send Enquiry</span> <span aria-hidden="true">↗</span>
+                </button>
+              </form>
+            </div>
+
+            <!-- FEEDBACK FORM PANEL -->
+            <div class="form-panel" id="panel-contact-feedback" role="tabpanel" aria-labelledby="btn-tab-feedback" style="display:none;">
+              <div class="form-alert" id="feedback-form-alert" style="display:none;" role="alert"></div>
+              <form id="portfolio-feedback-form" novalidate>
+                <!-- Anti-spam honeypot -->
+                <input type="text" name="website_hp" style="display:none!important;" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                <div class="contact-input-row">
+                  <div class="contact-field">
+                    <label for="feedback-category-trigger" id="label-feedback-category">Category</label>
+                    <div class="custom-select" data-custom-select="feedback-category">
+                      <select id="feedback-category" class="contact-input visually-hidden-select" tabindex="-1" aria-hidden="true">
+                        <option value="Design & Layout" selected>Design & Layout</option>
+                        <option value="Projects & Code">Projects & Code</option>
+                        <option value="Performance & Speed">Performance & Speed</option>
+                        <option value="General Suggestion">General Suggestion</option>
+                      </select>
+                      <button type="button" class="custom-select-trigger contact-input" id="feedback-category-trigger"
+                        role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="feedback-category-dropdown"
+                        aria-labelledby="label-feedback-category feedback-category-value">
+                        <span class="custom-select-value" id="feedback-category-value">Design & Layout</span>
+                        <span class="custom-select-arrow" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
+                        </span>
+                      </button>
+                      <ul class="custom-select-dropdown" id="feedback-category-dropdown" role="listbox" aria-labelledby="label-feedback-category" tabindex="-1">
+                        <li class="custom-select-option is-selected" role="option" aria-selected="true" data-value="Design & Layout" id="feedback-category-opt-0">
+                          <span class="opt-label">Design & Layout</span>
+                          <svg class="opt-check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </li>
+                        <li class="custom-select-option" role="option" aria-selected="false" data-value="Projects & Code" id="feedback-category-opt-1">
+                          <span class="opt-label">Projects & Code</span>
+                          <svg class="opt-check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </li>
+                        <li class="custom-select-option" role="option" aria-selected="false" data-value="Performance & Speed" id="feedback-category-opt-2">
+                          <span class="opt-label">Performance & Speed</span>
+                          <svg class="opt-check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </li>
+                        <li class="custom-select-option" role="option" aria-selected="false" data-value="General Suggestion" id="feedback-category-opt-3">
+                          <span class="opt-label">General Suggestion</span>
+                          <svg class="opt-check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="contact-field">
+                    <label for="feedback-name">Your Name (Optional)</label>
+                    <input type="text" id="feedback-name" class="contact-input" placeholder="Anonymous or Name">
+                  </div>
+                </div>
+
+                <div class="contact-field">
+                  <label for="feedback-message">Your Feedback / Suggestion *</label>
+                  <textarea id="feedback-message" class="contact-input contact-textarea" required minlength="5" maxlength="1500"
+                    placeholder="What did you like about the portfolio? Anything that could be improved?"></textarea>
+                </div>
+
+                <p class="contact-feedback-note">
+                  🔒 Feedback is stored privately for the site owner and is never published publicly.
+                </p>
+
+                <button type="submit" class="button-primary contact-submit-btn" id="btn-submit-feedback">
+                  <span>Submit Feedback</span> <span aria-hidden="true">✦</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
           <!-- FLOATING SOCIAL POPUP CARD (NO FULL-SCREEN BACKDROP) -->
           <div class="social-popup-card" id="social-popup-card" role="dialog" aria-modal="false"
             aria-labelledby="social-popup-title" hidden>
@@ -5406,15 +5998,10 @@
         if (!el) return 0;
         const header = document.querySelector('.site-header');
         const headerHeight = header ? header.offsetHeight : 70;
-        // Sticky header top is 16px, plus 20px clearance below header bottom
-        const allowance = headerHeight + 16 + 20;
+        const headerTop = window.innerWidth <= 768 ? 8 : 16;
+        const allowance = headerHeight + headerTop + 24;
         const rect = el.getBoundingClientRect();
         const absTop = window.scrollY + rect.top;
-
-        // When navigating to Contact, scroll so Certificates is completely pushed above the viewport
-        if (sectionId === 'contact') {
-          return Math.max(0, Math.round(absTop));
-        }
 
         return Math.max(0, Math.round(absTop - allowance));
       }
@@ -5499,14 +6086,18 @@
           return;
         }
 
-        // Bottom of page: strictly Contact
-        if ((viewportHeight + scrollY) >= (document.documentElement.scrollHeight - 60)) {
-          updateSidebarActive('contact');
-          return;
+        // Bottom of page: strictly Contact ONLY if contact is actually scrolled into upper view
+        const contactEl = document.getElementById('contact');
+        if (contactEl) {
+          const cRect = contactEl.getBoundingClientRect();
+          if ((viewportHeight + scrollY) >= (document.documentElement.scrollHeight - 40) && cRect.top <= (headerBottom + 120)) {
+            updateSidebarActive('contact');
+            return;
+          }
         }
 
         // Mid-page reading line directly below the sticky header
-        const readingLine = headerBottom + 70;
+        const readingLine = headerBottom + 60;
         let bestSection = 'home';
         let maxVisibleHeight = -1;
 
@@ -5630,7 +6221,7 @@
       });
 
       // Browser Back / Forward navigation (popstate ONLY - avoids hashchange scroll jumps)
-      function handleLocationChange() {
+      function handleLocationChange(isInitial = false) {
         let target = 'home';
         if (window.location.hash) {
           const h = window.location.hash.replace(/^#\/?/, '').toLowerCase();
@@ -5650,22 +6241,22 @@
 
         const el = document.getElementById(target);
         if (el) {
-          isProgrammaticScrolling = true;
-          updateSidebarActive(target);
-          const targetY = getSectionScrollTarget(target);
-          window.scrollTo({
-            top: targetY,
-            behavior: prefersReducedMotion ? 'auto' : 'smooth'
-          });
-
-          setTimeout(() => {
-            isProgrammaticScrolling = false;
-            updateScroll();
-          }, 350);
+          if (isInitial) {
+            const targetY = getSectionScrollTarget(target);
+            isProgrammaticScrolling = true;
+            updateSidebarActive(target);
+            window.scrollTo({ top: targetY, behavior: 'instant' });
+            setTimeout(() => {
+              isProgrammaticScrolling = false;
+              updateScroll();
+            }, 60);
+          } else {
+            scrollToSection(target, false);
+          }
         }
       }
 
-      window.addEventListener('popstate', handleLocationChange);
+      window.addEventListener('popstate', () => handleLocationChange(false));
 
       window.addEventListener('scroll', updateScroll, { passive: true });
       window.addEventListener('resize', resize, { passive: true });
@@ -5748,7 +6339,7 @@
         }
       ];
 
-      const projectsData = [
+      let projectsData = [
         {
           id: 'passcheck', number: '001', title: 'PassCheck', category: 'SECURITY', status: 'PUBLISHED DEMO',
           description: 'Privacy-focused password analysis, breach checks and secure password/passphrase generation.',
@@ -5907,7 +6498,7 @@
         }
       ];
 
-      const certificatesData = [
+      let certificatesData = [
         { id: 'fcc-fedl', title: 'Front End Development Libraries', issuer: 'freeCodeCamp', date: '2025', image: 'assets/certificates/front-end.jpg', verificationUrl: 'https://www.freecodecamp.org/certification/shivanshu_satyajeet/front-end-development-libraries' },
         { id: 'fcc-jads', title: 'JavaScript Algorithms and Data Structures', issuer: 'freeCodeCamp', date: '2025', image: 'assets/certificates/js-algo.jpg', verificationUrl: 'https://www.freecodecamp.org/certification/shivanshu_satyajeet/javascript-algorithms-and-data-structures' },
         { id: 'fcc-rwd', title: 'Responsive Web Design', issuer: 'freeCodeCamp', date: '2025', image: 'assets/certificates/rwd.jpg', verificationUrl: 'https://www.freecodecamp.org/certification/shivanshu_satyajeet/responsive-web-design' },
@@ -6205,9 +6796,407 @@
         }
       }, { passive: true });
 
+      /* ==========================================================================
+         PUBLIC ENQUIRY & FEEDBACK FORMS CONTROLLER
+         ========================================================================== */
+      (function initPublicForms() {
+        const btnTabEnquiry = document.getElementById('btn-tab-enquiry');
+        const btnTabFeedback = document.getElementById('btn-tab-feedback');
+        const panelEnquiry = document.getElementById('panel-contact-enquiry');
+        const panelFeedback = document.getElementById('panel-contact-feedback');
+
+        if (btnTabEnquiry && btnTabFeedback && panelEnquiry && panelFeedback) {
+          btnTabEnquiry.addEventListener('click', () => {
+            btnTabEnquiry.classList.add('active');
+            btnTabEnquiry.setAttribute('aria-selected', 'true');
+            btnTabFeedback.classList.remove('active');
+            btnTabFeedback.setAttribute('aria-selected', 'false');
+            panelEnquiry.style.display = 'block';
+            panelFeedback.style.display = 'none';
+          });
+
+          btnTabFeedback.addEventListener('click', () => {
+            btnTabFeedback.classList.add('active');
+            btnTabFeedback.setAttribute('aria-selected', 'true');
+            btnTabEnquiry.classList.remove('active');
+            btnTabEnquiry.setAttribute('aria-selected', 'false');
+            panelFeedback.style.display = 'block';
+            panelEnquiry.style.display = 'none';
+          });
+        }
+
+        // Initialize Accessible Custom Select Dropdowns
+        function initCustomSelects() {
+          const customSelects = document.querySelectorAll('.custom-select');
+          customSelects.forEach(wrapper => {
+            const nativeSelect = wrapper.querySelector('select');
+            const trigger = wrapper.querySelector('.custom-select-trigger');
+            const valueDisplay = wrapper.querySelector('.custom-select-value');
+            const dropdown = wrapper.querySelector('.custom-select-dropdown');
+            const options = Array.from(wrapper.querySelectorAll('.custom-select-option'));
+
+            if (!nativeSelect || !trigger || !dropdown) return;
+
+            let focusedIndex = options.findIndex(o => o.classList.contains('is-selected'));
+            if (focusedIndex < 0) focusedIndex = 0;
+
+            function openDropdown() {
+              document.querySelectorAll('.custom-select.is-open').forEach(other => {
+                if (other !== wrapper) {
+                  other.classList.remove('is-open');
+                  const otherTrigger = other.querySelector('.custom-select-trigger');
+                  if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+                }
+              });
+
+              wrapper.classList.add('is-open');
+              trigger.setAttribute('aria-expanded', 'true');
+              setFocus(focusedIndex);
+            }
+
+            function closeDropdown() {
+              wrapper.classList.remove('is-open');
+              trigger.setAttribute('aria-expanded', 'false');
+              options.forEach(o => o.classList.remove('is-focused'));
+            }
+
+            function toggleDropdown() {
+              if (wrapper.classList.contains('is-open')) {
+                closeDropdown();
+              } else {
+                openDropdown();
+              }
+            }
+
+            function setFocus(index) {
+              if (index < 0) index = 0;
+              if (index >= options.length) index = options.length - 1;
+              focusedIndex = index;
+              options.forEach((opt, idx) => {
+                opt.classList.toggle('is-focused', idx === index);
+              });
+              const focusedOpt = options[index];
+              if (focusedOpt) {
+                trigger.setAttribute('aria-activedescendant', focusedOpt.id);
+                focusedOpt.scrollIntoView({ block: 'nearest' });
+              }
+            }
+
+            function selectOption(opt) {
+              if (!opt) return;
+              const val = opt.getAttribute('data-value');
+              const text = opt.querySelector('.opt-label')?.textContent || val;
+
+              options.forEach(o => {
+                const isSel = o === opt;
+                o.classList.toggle('is-selected', isSel);
+                o.setAttribute('aria-selected', isSel ? 'true' : 'false');
+              });
+
+              if (valueDisplay) valueDisplay.textContent = text;
+              nativeSelect.value = val;
+              nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+
+              closeDropdown();
+              trigger.focus();
+            }
+
+            // Click trigger
+            trigger.addEventListener('click', (e) => {
+              e.preventDefault();
+              toggleDropdown();
+            });
+
+            // Option events
+            options.forEach((opt, idx) => {
+              opt.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                selectOption(opt);
+              });
+
+              opt.addEventListener('mouseenter', () => {
+                setFocus(idx);
+              });
+            });
+
+            // Keyboard navigation
+            trigger.addEventListener('keydown', (e) => {
+              const isOpen = wrapper.classList.contains('is-open');
+
+              switch (e.key) {
+                case 'ArrowDown':
+                  e.preventDefault();
+                  if (!isOpen) {
+                    openDropdown();
+                  } else {
+                    setFocus(focusedIndex + 1);
+                  }
+                  break;
+                case 'ArrowUp':
+                  e.preventDefault();
+                  if (!isOpen) {
+                    openDropdown();
+                  } else {
+                    setFocus(focusedIndex - 1);
+                  }
+                  break;
+                case 'Enter':
+                case ' ':
+                  e.preventDefault();
+                  if (!isOpen) {
+                    openDropdown();
+                  } else {
+                    selectOption(options[focusedIndex]);
+                  }
+                  break;
+                case 'Escape':
+                  if (isOpen) {
+                    e.preventDefault();
+                    closeDropdown();
+                  }
+                  break;
+                case 'Tab':
+                  if (isOpen) {
+                    closeDropdown();
+                  }
+                  break;
+              }
+            });
+
+            // Form reset synchronization
+            const form = wrapper.closest('form');
+            if (form) {
+              form.addEventListener('reset', () => {
+                setTimeout(() => {
+                  const defaultOpt = options[0];
+                  if (defaultOpt) {
+                    options.forEach((o, idx) => {
+                      o.classList.toggle('is-selected', idx === 0);
+                      o.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+                    });
+                    if (valueDisplay) {
+                      valueDisplay.textContent = defaultOpt.querySelector('.opt-label')?.textContent || defaultOpt.getAttribute('data-value');
+                    }
+                  }
+                }, 10);
+              });
+            }
+          });
+
+          // Outside click listener
+          document.addEventListener('click', (e) => {
+            if (!e.target.closest('.custom-select')) {
+              document.querySelectorAll('.custom-select.is-open').forEach(w => {
+                w.classList.remove('is-open');
+                const tr = w.querySelector('.custom-select-trigger');
+                if (tr) tr.setAttribute('aria-expanded', 'false');
+              });
+            }
+          });
+        }
+
+        initCustomSelects();
+
+        // Enquiry Form Submission
+        const enquiryForm = document.getElementById('portfolio-enquiry-form');
+        const enquiryAlert = document.getElementById('enquiry-form-alert');
+        const btnSubmitEnquiry = document.getElementById('btn-submit-enquiry');
+
+        if (enquiryForm) {
+          enquiryForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            if (enquiryAlert) enquiryAlert.style.display = 'none';
+
+            const name = (document.getElementById('enquiry-name')?.value || '').trim();
+            const email = (document.getElementById('enquiry-email')?.value || '').trim();
+            const topic = document.getElementById('enquiry-topic')?.value || 'General Enquiry';
+            const message = (document.getElementById('enquiry-message')?.value || '').trim();
+            const consent = document.getElementById('enquiry-consent')?.checked;
+            const honeypot = enquiryForm.querySelector('input[name="company_url"]')?.value || '';
+
+            if (!name || name.length < 2) {
+              showAlert(enquiryAlert, 'Please enter your name (at least 2 characters).', 'error');
+              return;
+            }
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+              showAlert(enquiryAlert, 'Please enter a valid email address.', 'error');
+              return;
+            }
+            if (!message || message.length < 10) {
+              showAlert(enquiryAlert, 'Please enter a message with at least 10 characters.', 'error');
+              return;
+            }
+            if (!consent) {
+              showAlert(enquiryAlert, 'Please agree to the privacy consent to send your message.', 'error');
+              return;
+            }
+
+            if (btnSubmitEnquiry) {
+              btnSubmitEnquiry.disabled = true;
+              btnSubmitEnquiry.innerHTML = '<span>Sending Enquiry...</span>';
+            }
+
+            try {
+              const res = await fetch('/api/enquiries', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, topic, message, consent, company_url: honeypot })
+              });
+              const data = await res.json();
+
+              if (res.ok && data.success) {
+                showAlert(enquiryAlert, data.message || 'Thank you! Your message has been sent directly to Shivanshu.', 'success');
+                enquiryForm.reset();
+              } else {
+                showAlert(enquiryAlert, data.message || 'Could not send enquiry. Please try emailing directly.', 'error');
+              }
+            } catch (err) {
+              showAlert(enquiryAlert, 'Network error. Please try emailing itsupport.shiv@gmail.com directly.', 'error');
+            } finally {
+              if (btnSubmitEnquiry) {
+                btnSubmitEnquiry.disabled = false;
+                btnSubmitEnquiry.innerHTML = '<span>Send Enquiry</span> <span aria-hidden="true">↗</span>';
+              }
+            }
+          });
+        }
+
+        // Feedback Form Submission
+        const feedbackForm = document.getElementById('portfolio-feedback-form');
+        const feedbackAlert = document.getElementById('feedback-form-alert');
+        const btnSubmitFeedback = document.getElementById('btn-submit-feedback');
+
+        if (feedbackForm) {
+          feedbackForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            if (feedbackAlert) feedbackAlert.style.display = 'none';
+
+            const category = document.getElementById('feedback-category')?.value || 'General';
+            const senderName = (document.getElementById('feedback-name')?.value || '').trim();
+            const message = (document.getElementById('feedback-message')?.value || '').trim();
+            const honeypot = feedbackForm.querySelector('input[name="website_hp"]')?.value || '';
+
+            if (!message || message.length < 5) {
+              showAlert(feedbackAlert, 'Please share feedback with at least 5 characters.', 'error');
+              return;
+            }
+
+            if (btnSubmitFeedback) {
+              btnSubmitFeedback.disabled = true;
+              btnSubmitFeedback.innerHTML = '<span>Submitting Feedback...</span>';
+            }
+
+            try {
+              const res = await fetch('/api/feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category, senderName, message, website_hp: honeypot })
+              });
+              const data = await res.json();
+
+              if (res.ok && data.success) {
+                showAlert(feedbackAlert, data.message || 'Thank you! Your feedback has been recorded privately.', 'success');
+                feedbackForm.reset();
+              } else {
+                showAlert(feedbackAlert, data.message || 'Could not save feedback.', 'error');
+              }
+            } catch (err) {
+              showAlert(feedbackAlert, 'Network error while submitting feedback.', 'error');
+            } finally {
+              if (btnSubmitFeedback) {
+                btnSubmitFeedback.disabled = false;
+                btnSubmitFeedback.innerHTML = '<span>Submit Feedback</span> <span aria-hidden="true">✦</span>';
+              }
+            }
+          });
+        }
+
+        function showAlert(el, msg, type) {
+          if (!el) return;
+          el.className = 'form-alert ' + type;
+          el.textContent = msg;
+          el.style.display = 'block';
+        }
+      })();
+
+      /* ==========================================================================
+         DYNAMIC PUBLIC PORTFOLIO DATA SYNC WITH STATIC FALLBACK
+         ========================================================================== */
+      async function syncLivePortfolioData() {
+        try {
+          const [projRes, certRes] = await Promise.allSettled([
+            fetch('/api/projects'),
+            fetch('/api/certificates')
+          ]);
+
+          if (projRes.status === 'fulfilled' && projRes.value.ok) {
+            const data = await projRes.value.json();
+            if (data.success && Array.isArray(data.projects) && data.projects.length > 0) {
+              projectsData = data.projects;
+              const projectGrid = document.getElementById('project-grid');
+              if (projectGrid) {
+                projectGrid.innerHTML = projectsData.map(p =>
+                  '<article class="project-card" data-category="' + esc(p.category) + '">' +
+                  '<div class="project-body">' +
+                  '<div class="project-meta-line">' +
+                  '<span class="project-category">' + esc(p.category) + '</span>' +
+                  '<span class="project-status" data-status="' + esc(p.status) + '">' + esc(p.status) + '</span>' +
+                  '</div>' +
+                  '<h3>' + esc(p.title) + '</h3>' +
+                  '<p class="project-desc">' + esc(p.description) + '</p>' +
+                  (p.statusNote ? '<p class="project-status-note">' + esc(p.statusNote) + '</p>' : '') +
+                  '<div class="project-tech-tags">' +
+                  (p.technologies || []).slice(0, 4).map(t => '<span>' + esc(t) + '</span>').join('') +
+                  '</div>' +
+                  '<div class="project-actions">' +
+                  '<button type="button" data-open-project="' + esc(p.id) + '">Details ↗</button>' +
+                  '<a href="' + esc(p.githubUrl) + '" target="_blank" rel="noopener noreferrer">Source code ↗</a>' +
+                  (p.liveUrl ? '<a href="' + esc(p.liveUrl) + '" target="_blank" rel="noopener noreferrer">Demo ↗</a>' : '') +
+                  '</div>' +
+                  '</div>' +
+                  '</article>'
+                ).join('');
+              }
+              const statProjects = document.getElementById('stat-projects');
+              if (statProjects) statProjects.textContent = projectsData.length;
+            }
+          }
+
+          if (certRes.status === 'fulfilled' && certRes.value.ok) {
+            const data = await certRes.value.json();
+            if (data.success && Array.isArray(data.certificates) && data.certificates.length > 0) {
+              certificatesData = data.certificates;
+              const certGrid = document.getElementById('cert-grid');
+              if (certGrid) {
+                certGrid.innerHTML = certificatesData.map(cert =>
+                  '<article class="cert-card">' +
+                  '<div class="cert-media">' +
+                  '<img src="' + esc(cert.image) + '" alt="' + esc(cert.title) + ' certificate preview" width="800" height="540" loading="lazy" decoding="async">' +
+                  '</div>' +
+                  '<div class="cert-info">' +
+                  '<h3>' + esc(cert.title) + '</h3>' +
+                  '<p>' + esc(cert.issuer) + ' · ' + esc(cert.date) + '</p>' +
+                  (cert.verificationUrl
+                    ? '<a class="cert-link" href="' + esc(cert.verificationUrl) + '" target="_blank" rel="noopener noreferrer">Verify credential ↗</a>'
+                    : '<span class="cert-link" style="color:var(--text-subtle);">Certificate preview</span>') +
+                  '</div>' +
+                  '</article>'
+                ).join('');
+              }
+              const statCerts = document.getElementById('stat-certs');
+              if (statCerts) statCerts.textContent = certificatesData.length;
+            }
+          }
+        } catch (err) {
+          // Gracefully retains existing verified static content
+        }
+      }
+      syncLivePortfolioData();
+
       /* INITIALIZE CONTINUOUS SCROLL POSITION & 86-FRAME CANVAS */
       resize();
-      handleLocationChange();
+      handleLocationChange(true);
       updateScroll();
 
       /* ==========================================================================
